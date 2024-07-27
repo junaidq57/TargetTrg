@@ -1,0 +1,14 @@
+<?php
+/**
+ * @var $block TargetTraining\Homepage\Block\Widget\Column
+ */
+?>
+<div class="home_col <?php echo $block->getColorClass(); ?> <?php echo $block->getCssClass(); ?>">
+
+    <?php echo $block->getStaticBlockHtml(); ?>
+
+    <?php if ($block->hasLink()): ?>
+        <a class="link-more" href="<?php echo $block->getLinkHref(); ?>"><?php echo  __('More info')?></a>
+    <?php endif; ?>
+</div>
+

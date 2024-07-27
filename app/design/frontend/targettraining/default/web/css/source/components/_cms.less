@@ -1,0 +1,621 @@
+//
+//    Common
+//--------------------------------------
+& when (@media-common = true) {
+  img{
+    height: auto;
+  }
+
+  // Testimonial pages
+  .cms-page-view[class*="testimonial"]{
+    .breadcrumbs{
+      text-align: center;
+      margin: 56px auto 0;
+    }
+    .page-title-wrapper{
+      text-align: center;
+      margin-top: 10px;
+
+      .page-title{
+        font-size: 60px;
+        line-height: 64px;
+        margin-bottom: 18px;
+        text-transform: none;
+        font-family: @font-title;
+      }
+    }
+    .columns{
+      .column.main{
+        text-align: center;
+        font-size: 20px;
+        width: 100%;
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+    }
+  }
+  .testimonial{
+    &-list{
+      margin: 100px 0 0;
+
+      ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+
+        li{
+          position: relative;
+          padding: 58px 64px 64px;
+          border: 1px solid @color-blue4;
+          border-radius: 3px;
+          margin-bottom: 98px;
+
+          p{
+            font: bold 24px @font-title;
+            line-height: 44px;
+            margin: 0 0 20px;
+          }
+          .testimonial-img{
+            position: absolute;
+            top: -48px;
+            right: 60px;
+
+            img{
+              display: block;
+            }
+          }
+          &:nth-child(2n){
+            .testimonial-img{
+              right: auto;
+              left: 60px;
+            }
+          }
+        }
+      }
+    }
+    &-author,
+    &-incorporation{
+      font: 18px @font-base;
+      line-height: 22px;
+      color: @color-blue4;
+      text-transform: uppercase;
+      margin: 0 0 3px;
+    }
+    &-incorporation{
+      text-transform: none;
+      color: #333;
+      opacity: 0.5;
+    }
+    &-description{
+      margin: 120px 0 60px;
+      padding: 70px 60px 50px;
+      border-radius: 3px;
+      background: @color-blue4;
+      color: @color-white;
+      font-size: 20px;
+      line-height: 34px;
+      position: relative;
+
+      &:before{
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        margin-left: -60px;
+        content: '';
+        background: url(../images/testimonial_contact.png) no-repeat center;
+      }
+      p{
+        margin-bottom: 1em;
+      }
+    }
+    &-trust{
+      margin-bottom: 60px;
+
+      h2{
+        text-transform: none;
+        font-size: 60px;
+        margin-bottom: 33px;
+      }
+      ul{
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-align: left;
+
+        li{
+          float: left;
+          width: 48.72%;
+          margin: 0 0 30px 2.56%;
+          padding: 30px;
+          position: relative;
+          border: 1px solid #d2d2d2;
+
+          .testimonial-type{
+            position: absolute;
+            top: 25px;
+            right: 25px;
+          }
+          h4{
+            font-size: 18px;
+            text-transform: capitalize;
+            margin: 0;
+          }
+          p{
+            font-weight: 300;
+          }
+          .testimonial-time{
+            margin: 0 0 5px;
+            font-size: 12px;
+            opacity: 0.5;
+            line-height: 1;
+          }
+          &:nth-child(2n + 1){
+            clear: both;
+            margin-left: 0;
+          }
+        }
+      }
+    }
+    &-logo{
+      img{
+        vertical-align: top;
+      }
+    }
+  }
+  .cms-about-us-the-team{
+    .page-wrapper{
+      overflow-x: hidden;
+    }
+    .column.main{
+      padding-bottom: 0;
+    }
+  }
+  .person-wrapper{
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    padding: 90px 60px 60px 90px;
+    background: #F8FBFE;
+    border-radius: 10px;
+    font-family: @font-base;
+    font-size: 20px;
+    margin: 40px 0 20px;
+    color: #303030;
+
+    p{
+      line-height: 1.7;
+      margin: 0 0 1em;
+
+      strong{
+        font-weight: 600;
+      }
+    }
+    a{
+      color: @color-blue4;
+
+      &.showmore{
+        font-family: @font-title;
+        text-transform: uppercase;
+        font-weight: 600;
+
+        &:before{
+          content: "+ ";
+        }
+      }
+    }
+    .person-image{
+      float: left;
+      margin: 0 4.8% 30px 0;
+      width: 35.37%;
+
+      img{
+        border-radius: 10px;
+        width: 100%;
+      }
+    }
+    .person-name{
+      margin: 50px 0 20px;
+
+      img{
+        float: left;
+        width: 72px;
+        margin-right: 15px;
+      }
+      h2{
+        font: 600 36px @font-title;
+        line-height: 1.2;
+        color: @color-red3;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      p{
+        color: @color-red3;
+        font-family: @font-title;
+        font-weight: 600;
+      }
+    }
+    .person-more{
+      display: none;
+    }
+  }
+  .cms-trustpilot{
+    text-align: center;
+    padding-bottom: 60px;
+    margin: 120px 0 80px;
+    position: relative;
+
+    &:before{
+      width: 1920px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+      content: '';
+      background: url(../images/trustpilot_bg.png) no-repeat top center;
+      z-index: -1;
+    }
+    h3{
+      font: 700 60px @font-title;
+      margin: 0 0 15px;
+      text-transform: none;
+      letter-spacing: -1.2px;
+    }
+  }
+  .team-contact-form{
+    position: relative;
+    padding: 90px 0 100px;
+    margin: 40px auto 0;
+    text-align: center;
+    max-width: 1345px;
+
+    &:before{
+      width: 5000px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+      background: #DFEFFF;
+      content: '';
+      z-index: -1;
+    }
+    h1{
+      font: bold 60px @font-title;
+      text-transform: capitalize;
+      margin: 0 0 10px;
+    }
+    form.contact{
+      font-size: 20px;
+      line-height: 1.7;
+      text-align: left;
+
+      h3{
+        display: none;
+      }
+      .fieldset {
+        .field{
+          &.note {
+            margin-bottom: 50px;
+            text-align: center;
+          }
+          .input-text,
+          textarea.input-text{
+            border: none;
+            border-radius: 4px;
+            font: 20px @font-base;
+
+            &::-webkit-input-placeholder {
+              color: #5d5d5d;
+            }
+
+            &::placeholder {
+              color: #5d5d5d;
+            }
+          }
+          textarea.input-text{
+            height: 276px;
+            padding: 15px 20px;
+          }
+        }
+        .fields{
+          .field{
+            + .field{
+              margin-left: 0;
+            }
+            &.name{
+              width: 100%;
+            }
+            &.email,
+            &.telephone{
+              width: 49%;
+            }
+            &.telephone{
+              float: right;
+            }
+          }
+        }
+      }
+      .actions-toolbar{
+        text-align: center;
+
+        .primary{
+          margin: 0 auto;
+
+          .action{
+            background: #D33130;
+            border: none;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xl) {
+  div.person-wrapper{
+    padding: 20px;
+    margin: 20px 0 0;
+
+    p{
+      font-size: 18px;
+    }
+    .person-image{
+      margin: 0 20px 10px 0;
+      width: 33%;
+    }
+    .person-name{
+      margin: 0;
+
+      h2{
+        font-size: 28px;
+      }
+    }
+  }
+  div.cms-trustpilot{
+    margin: 30px 0 10px;
+    padding-bottom: 20px;
+
+    h3{
+      font-size: 36px;
+      line-height: 1.25;
+    }
+  }
+  div.team-contact-form{
+    padding: 15px 0 50px;
+
+    h1{
+      font-size: 36px;
+    }
+    form.contact{
+      font-size: 18px;
+
+      .fieldset {
+        .field{
+          &.note{
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  body.cms-page-view[class*="testimonial"]{
+    .breadcrumbs{
+      display: block;
+      margin: 30px 0 0;
+    }
+    .page-title-wrapper{
+      margin-top: 20px;
+
+      .page-title{
+        font-size: 36px;
+        line-height: 40px;
+        font-weight: bold;
+        letter-spacing: -0.72px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+  div.testimonial{
+    &-list{
+      margin-top: 70px;
+
+      ul{
+        text-align: center;
+
+        li{
+          padding: 40px 10px 20px;
+          margin-bottom: 65px;
+
+          p{
+            font-size: 20px;
+            line-height: 28px;
+          }
+          .testimonial-img{
+            width: 76px;
+            right: auto;
+            left: 50%;
+            top: -38px;
+            margin-left: -38px;
+          }
+          &:nth-child(2n){
+            .testimonial-img{
+              left: 50%;
+            }
+          }
+          &:last-child{
+            margin-bottom: 30px;
+          }
+          .testimonial-author{
+            position: relative;
+
+            &:before{
+              width: 48px;
+              height: 1px;
+              background: #E83E3E;
+              position: absolute;
+              top: -10px;
+              left: 50%;
+              margin-left: -24px;
+              content: '';
+            }
+          }
+        }
+      }
+    }
+    &-logo{
+      img{
+        max-width: 49%;
+        vertical-align: middle;
+      }
+    }
+    &-description{
+      margin: 60px 0 0;
+      padding: 50px 10px 1px;
+
+      &:before{
+        width: 90px;
+        height: 90px;
+        margin-left: -45px;
+        top: -45px;
+        background-size: 100% auto;
+      }
+    }
+    &-trust{
+      margin-bottom: 0;
+
+      h2{
+        font-size: 36px;
+        margin-bottom: 25px;
+        font-weight: bold;
+      }
+      ul{
+        li{
+          width: 100%;
+          margin-bottom: 15px;
+          margin-left: 0;
+          padding: 15px;
+        }
+      }
+    }
+  }
+  div.person-wrapper{
+    margin: 0 0 10px;
+    padding: 0;
+    background: none;
+
+    a.showmore{
+      display: block;
+      font: bold 20px @font-title;
+      color: @color-white;
+      text-transform: none;
+      background: @color-blue4;
+      padding: 15px 5px;
+      border-radius: 4px;
+
+      &:before{
+        display: none;
+      }
+    }
+    .person-image{
+      padding: 10px;
+      background: #F8FBFE;
+      width: 100%;
+      float: none;
+      border-radius: 10px 10px 0 0;
+      margin: 0;
+    }
+    .person-info{
+      text-align: center;
+    }
+    .person-name{
+      padding: 10px;
+      background: #F8FBFE;
+      position: relative;
+      border-radius: 0 0 10px 10px;
+      margin-bottom: 15px;
+
+      img{
+        float: none;
+        margin: 0;
+        width: 42px;
+        position: absolute;
+        top: -39px;
+        left: 50%;
+        margin-left: -21px;
+      }
+      p{
+        margin: 0;
+      }
+    }
+  }
+  div.cms-trustpilot{
+    margin: 20px 0;
+
+    &:before{
+      display: none;
+    }
+    h3{
+      font-size: 28px;
+      letter-spacing: 0;
+    }
+    .trustpilot-widget{
+      display: block;
+    }
+  }
+  div.team-contact-form {
+    h1{
+      margin-bottom: 20px;
+    }
+    form.contact {
+      .fieldset {
+        .field{
+          &.note{
+            display: none;
+          }
+        }
+        .fields {
+          .field{
+            &.email,
+            &.telephone{
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .cms-about-us-the-team{
+    .page-footer{
+      margin-top: 0;
+    }
+  }
+}
+
+//
+//    Desktop
+//--------------------------------------
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .cms-page-view {
+    .columns {
+      .column {
+        &.main {
+          //width: 66%
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+<script type="text/javascript">
+    require([
+            'jquery',
+            'jquery/ui'
+        ],
+        function($, tabs) {
+            $("#ticket_tabs").tabs();
+        }
+    );
+</script>
+
+<div id="ticket_tabs">
+    <ul>
+        <li data-role="title"><a href="#tabs-course-timetable"><span>course timetable</span></a></li>
+        <li data-role="title"><a href="#tabs-testimonials"><span>testimonials</span></a></li>
+        <li data-role="title"><a href="#tabs-faqs"><span>faqs</span></a></li>
+        <li data-role="title"><a href="#tabs-downloads"><span>downloads</span></a></li>
+    </ul>
+    <div id="tabs-course-timetable" data-role="content">
+        <?php echo $block->getCourseTimetable(); ?>
+    </div>
+    <div id="tabs-testimonials" data-role="content">
+        <?php echo $this->getLayout()
+                    ->createBlock('Magento\Cms\Block\Block')
+                    ->setBlockId('testimonials')
+                    ->toHtml(); ?>
+    </div>
+    <div id="tabs-faqs" data-role="content">
+        <?php echo $this->getLayout()
+                        ->createBlock('Magento\Cms\Block\Block')
+                        ->setBlockId('faqs')
+                        ->toHtml(); ?>
+    </div>
+    <div id="tabs-downloads" data-role="content">
+        <p>downloads</p>
+    </div>
+</div>
+

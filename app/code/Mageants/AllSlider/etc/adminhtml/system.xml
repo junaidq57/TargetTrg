@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mageants" translate="label" sortOrder="100">
+            <label>Mageants</label>
+        </tab>
+        <section id="mageants_allslider"  showInDefault="1" showInWebsite="1" showInStore="1">
+            <tab>mageants</tab>
+            <label>All In One Slider</label>
+            <resource>Mageants_AllSlider::config_mageants_allslider</resource>
+            <group id="allslider_setting"  showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Slider Settings</label>
+				<field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+				<field id="limit" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Limit</label>
+                    <validate>required-entry validate-digits-range digits-range-1-</validate>
+                </field>
+                <field id="items" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max Items</label>
+                    <validate>required-entry validate-digits-range digits-range-1-5</validate>
+                </field>
+                <field id="slide_show_speed" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Slide Show Speed</label>
+                    <validate>required-entry validate-digits-range digits-range-1-</validate>
+                </field>
+            </group>
+			<group id="button_setting"  showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Button Settings</label>
+                <field id="price" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Price</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="add_to_cart" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable AddToCart</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+				<field id="wishlist" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Wishlist</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+				<field id="compare" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Compare</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+				<field id="review" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Review</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

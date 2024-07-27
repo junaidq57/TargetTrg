@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_order_item_save_commit_after">
+        <observer name="generate_ticket" instance="Magenest\Ticket\Observer\GenerateTicket"/>
+    </event>
+    <event name="sales_quote_item_qty_set_after">
+        <observer name="option_event_qty" instance="Magenest\Ticket\Observer\QuantityValidatorObserver"/>
+    </event>
+    <event name="sales_order_place_after">
+        <observer name="ticket_controller_success_action" instance="Magenest\Ticket\Observer\PlaceOrder"  />
+    </event>
+    <!--<event name="sales_quote_collect_totals_before">-->
+        <!--<observer name="ticket_controller_tax_calculated_action" instance="Magenest\Ticket\Observer\ChangeTaxAmount"  />-->
+    <!--</event>-->
+</config>

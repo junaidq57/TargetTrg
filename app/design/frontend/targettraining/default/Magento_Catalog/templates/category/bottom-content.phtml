@@ -1,0 +1,12 @@
+<?php
+$bottomContent = $block->getCurrentCategory()->getCategoryBottomContent();
+$topContent = $block->getCurrentCategory()->getCategoryTopContent();
+if ($bottomContent) { ?>
+    <div class="category-cms">
+        <div class="top-content">
+            <?= $topContent; ?>
+        </div>
+
+        <?= $bottomContent; ?>
+    </div>
+<?php } ?>

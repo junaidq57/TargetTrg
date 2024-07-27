@@ -1,0 +1,53 @@
+@color-red1: #E34248;
+
+//
+// Common
+//--------------------------------------
+& when (@media-common = true) {
+  .cms-index-index {
+    .widgets {
+      .event-finder {
+        background: @color-red1;
+        .fieldset {
+          padding: @indent__m;
+        }
+
+        h3 {
+          color: @color-white;
+          padding-left: @indent__m;
+        }
+
+        .actions-toolbar {
+          float: right;
+
+          button {
+            border-radius: 50px;
+          }
+        }
+      }
+    }
+  }
+
+  .catalog-product-view {
+
+  }
+}
+
+//
+// Mobile
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+}
+
+//
+// Desktop
+//--------------------------------------
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .cms-index-index {
+    .widgets {
+      .event-finder {
+        width: 33.33%;
+      }
+    }
+  }
+}

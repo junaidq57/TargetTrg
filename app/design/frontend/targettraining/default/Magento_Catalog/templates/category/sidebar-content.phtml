@@ -1,0 +1,13 @@
+<?php
+
+    $html = $this->getLayout()->createBlock(
+                \Magento\Cms\Block\Block::class
+            )->setBlockId(
+                $this->getCurrentCategory()->getCategorySidebarContent()
+            )->toHtml();
+            $this->setData('cms_block_html', $html);
+
+    echo $html;    
+
+
+?>

@@ -1,0 +1,45 @@
+<style>
+	.customreport-pagination .active{
+		font-weight: bold;
+	}
+	.customreport-pagination, .admin__control-support-text{
+		float: left;
+	}
+	.customreport-pagination{
+		padding-top: 7px;
+	}
+	.cp-clear{
+		clear: both;
+	}
+	
+</style>
+<?php if($block->getTotalPages() != 0): ?>
+	<div class="customreport-pagination" >
+		<?php $block->getPreviewPage(); ?>
+		<?php if($block->getCurrentPage() != 1): ?>
+			<span>
+				<a href="<?php echo $block->getCurrentUrl().'?p='.$block->getPreviewPage();?>"><?php echo __("<<"); ?></a>
+			</span>
+		<?php endif;?>
+			<?php foreach($block->paginationFormat() as $page): ?>
+				<?php
+					if($block->getCurrentPage() == $page){
+						$href = "javascript:void(0)";
+						$active = "active";
+					}else{
+						$href = $block->getCurrentUrl().'?p='.$page;
+						$active = "";
+					}
+				?>
+				<span><a class="<?php echo $active?>" href="<?php echo $href; ?>"><?php echo $page;?></a></span>
+			<?php endforeach;?>
+
+		<?php if($block->getCurrentPage() != $block->getTotalPages()): ?>
+			<span>
+				<a href="<?php echo $block->getCurrentUrl().'?p='.$block->getNextPage();?>"><?php echo __(">>"); ?></a>
+			</span>
+		<?php endif;?>
+	</div>
+	<!-- cp: customreport pagination -->
+	<div class="cp-clear"></div>
+<?php endif; ?>

@@ -1,0 +1,47 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+/**
+ * Category view template
+ *
+ * @var $block \Magento\Catalog\Block\Category\View
+ */
+?>
+<?php if ($block->isContentMode() || $block->isMixedMode()) :?>
+    <div class="category-cms">
+        <?= $block->getCmsBlockHtml() ?>
+    </div>
+<?php endif; ?>
+<?php
+$faqs = $block->getCurrentCategory()->getCategoryFaqs();
+$topContent = $block->getCurrentCategory()->getCategoryTopContent();
+$bottomContent = $block->getCurrentCategory()->getCategoryBottomContent();
+
+
+if (!empty($faqs) || !($topContent)) { ?>
+
+    <div class="category-cms">
+        <?php if ($topContent): ?>
+        <div class="widget block block-static-block">
+            <?= $topContent; ?>
+        </div>
+        <?php endif; ?>
+        <?php if ($faqs): ?>
+            <div class="widget block block-static-block">
+                <?= $faqs; ?>
+            </div>
+        <?php endif; ?>
+    </div>
+
+<?php
+    if ($bottomContent) { ?>
+    <div class="category-cms">    
+        <?= $bottomContent; ?>
+    </div>
+
+
+<?php } } ?>

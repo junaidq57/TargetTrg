@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="main">
+            <container name="category.page.title" htmlTag="div" before="-">
+                <block class="Magento\Catalog\Block\Category\View" name="category.shop.description" template="Magento_Catalog::category/description.phtml"/>
+            </container>
+         <block class="Magento\Catalog\Block\Category\View" name="category_sidebar_content_mb"
+                   template="Magento_Catalog::category/sidebar-content.phtml"/>
+        </referenceContainer>
+
+        <referenceBlock name="category.product.addto.compare" remove="true"/>
+
+        <move element="category.description" destination="category.info" after="category.image"/>
+        <move element="category.image" destination="category.info" />
+
+        <referenceContainer name="header.container">
+            <container name="category.info" htmlTag="div" before="top.event.finder" htmlClass="category-info"/>
+        </referenceContainer>
+
+        <move element="page.main.title" destination="category.page.title" before="category.shop.description" />
+        <move element="breadcrumbs" destination="category.page.title" before="-" />
+        <referenceBlock name="catalog.leftnav" remove="true" />
+
+        <referenceContainer name="sidebar.main">
+            <container name="sidebar.main.top" htmlTag="div" before="-" htmlClass="sidebar-main-top">
+                <block class="Magento\Cms\Block\Block" name="sub.category.links" as="sub_category_links">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">category_sub_links</argument>
+                    </arguments>
+                </block>
+            </container>
+          <block class="Magento\Catalog\Block\Category\View" name="category_sidebar_content"
+                   template="Magento_Catalog::category/sidebar-content.phtml"/>
+  
+
+        </referenceContainer>
+
+        <referenceContainer name="page.bottom">
+            <block class="Magento\Catalog\Block\Category\View" name="category_bottom_content"
+                   template="Magento_Catalog::category/bottom-content.phtml"/>
+               <block class="Magento\Catalog\Block\Category\View" name="category_sidebar_content_bottom"
+                   template="Magento_Catalog::category/sidebar-content.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

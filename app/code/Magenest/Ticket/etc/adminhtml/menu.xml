@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ *
+ * Magenest_Ticket extension
+ * NOTICE OF LICENSE
+ *
+ * @category  Magenest
+ * @package   Magenest_Ticket
+ * @author ThaoPV <thaopw@gmail.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Magenest_Ticket::ticket" title="Event Management" module="Magenest_Ticket" sortOrder="20" resource="Magenest_Ticket::ticket" parent="Magento_Catalog::catalog"/>
+        <add id="Magenest_Ticket::event" title="Event" module="Magenest_Ticket" sortOrder="10" action="magenest_ticket/event" resource="Magenest_Ticket::event" parent="Magenest_Ticket::ticket"/>
+        <add id="Magenest_Ticket::tickets" title="Ticket" module="Magenest_Ticket" sortOrder="15" action="magenest_ticket/ticket" resource="Magenest_Ticket::tickets" parent="Magenest_Ticket::ticket"/>
+    </menu>
+</config>

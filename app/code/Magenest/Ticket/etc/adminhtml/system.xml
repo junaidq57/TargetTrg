@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ *
+ * Magenest_Ticket extension
+ * NOTICE OF LICENSE
+ *
+ * @category  Magenest
+ * @package   Magenest_Ticket
+ * @author ThaoPV <thaopw@gmail.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
+    <system>
+        <tab id="magenest" translate="label" sortOrder="200">
+            <label>Magenest</label>
+        </tab>
+        <section id="event_ticket" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Event Ticket</label>
+            <tab>magenest</tab>
+            <resource>Magenest_Ticket::config_ticket</resource>
+            <group id="general_config" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="pattern_code" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Pattern To Generate Code</label>
+                    <tooltip><![CDATA[Pattern when generate code</br>
+                    <ol><li>[A2] : Random 2 characters</li>
+                    <li>[N3] : Random 3 numbers</li>
+                    <li>Magenest : Fixed characters</li>
+                    </ol>
+                    Example:
+                    <ol><li>[A2][N1]Magenest[N3][A2] => Ah3Magenest368ot</li>
+                    <li>[N2][A2]ecommerce[N1][A2] => 54Phecommerce2mA</li>
+                    </ol>
+                    ]]></tooltip>
+                </field>
+                <field id="google_api_key" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Google API Keys</label>
+                    <tooltip><![CDATA[Enter key can show map of event in frontend. Default key:</br> AIzaSyCpi0fGkOSmkv1u_02poRTMB480GlscrwY]]></tooltip>
+                </field>
+                <field	id="delete_qty" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"	showInStore="1">
+                    <label>Change quantity</label>
+                    <source_model>Magenest\Ticket\Model\Config\Source\ChangeQty</source_model>
+                </field>
+            </group>
+            <group id="email_config" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Email</label>
+                <field	id="email" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"	showInStore="1">
+                    <label>Configuration</label>
+                    <source_model>Magenest\Ticket\Model\Config\Source\Email</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

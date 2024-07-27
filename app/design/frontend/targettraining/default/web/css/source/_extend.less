@@ -1,0 +1,188 @@
+@import "extend/_variables";
+@import "components/_header";
+@import "components/_header_finder";
+@import "components/_footer";
+@import "components/_calendar";
+@import "components/_homepage";
+@import "components/_cms";
+@import "components/_blog";
+@import "components/_product";
+
+//
+//    Common
+//--------------------------------------
+& when (@media-common = true) {
+  h1, h2, h3, h4 {
+    font-family: 'Nunito', sans-serif;
+    text-transform: lowercase;
+  }
+}
+
+//
+//.clear{clear:both;}
+//
+///** HEADER STYLES **/
+//body.cms-home .page-main{max-width: none; padding-right: 0px; padding-left: 0px;}
+//body.cms-home .page-title-wrapper{display: none;}
+//
+///** HEADER STYLES **/
+//.nav-sections{margin-bottom: 0px;}
+//.nav-sections-items{background:#0090cf;}
+//.navigation {background: none;}
+//.navigation .level0>.level-top {color: #ffffff !important;}
+//.page-header .panel.wrapper{background:#ececec; color: #000000;}
+//.page-header .panel.wrapper a{color: #000000;}
+//.page-header .panel.wrapper a:hover{color: #000000;}
+//.header.panel>.header.links>li>a{color:#000000;}
+//.header.panel>.header.links>li>a:hover{color:#0090cf}
+//
+//
+///** FOOTER STYLES **/
+//.footer_social{background:#e83e3e; width:100%; text-align: center; padding-top: 10px;}
+//.footer_social p{display: inline; vertical-align: 20px;}
+//.footer_social img{vertical-align: 10px; padding-right: 5px; padding-left: 5px;}
+//.footer-columns{margin-left:50px; margin-right:50px;}
+//.footer-columns a{color: #FFFFFF;}
+//.footer_copyright{margin-left:  2%;margin-right:  2%;font-size: 10px;margin-top: 20px; border-top:1px solid #69bfe3; padding-top: 20px;
+//    padding-bottom: 15px;color:#FFFFFF;}
+//.footer_copyright a{color: #FFFFFF;}
+//
+//
+///** HOME STYLES **/
+//
+//.home_col img { width: 100%; filter: grayscale(1);}
+//.home_col img:hover {  filter: grayscale(0);}
+//.home_col h3 {padding-left: 20px; padding-right: 20px;}
+//.home_col p {padding-left: 20px; padding-right: 20px;}
+//.home_col a{color:#FFFFFF;}
+//.home_col.red {background: #e83e3e;}
+//.home_col.blue {background: #0092d0;}
+//.home_testimonials {background: url('@{baseDir}images/home10.png'); clear: both; padding:50px; }
+//.home_testimonials .testimonials_inner {background: #FFFFFF; opacity: 0.7; text-align: center; }
+//.home_testimonials .testimonials_inner h3 {color: #e83e3e; font-size: 20px; padding-top: 20px;}
+//.home_testimonials .testimonials_inner p {font-size: 14px;}
+//
+//.home_col.Logo img { width: 75%; margin: 32px 12.5% 0;filter: grayscale(0); }
+//.home_col.Logo { text-align: center; height: 400px; }
+//.home_col.Logo a { display: block; font-size: 2.4rem; margin: 5px 0; color:#0092d0;}
+//.home_col.Trainer { background:#0092d0; height: 400px; }
+//.home_col.Finder { background:#e83e3e; height: 400px; }
+//.testimonial i { font-size: 2rem; line-height: 3rem; }
+//.testimonial p { text-align: right; padding: 0 25px; }
+//.home_col.red p,.home_col.blue p, .home_col.red h3, .home_col.blue h3, .home_col.Trainer h3, .home_col.Trainer p, .home_col.Finder h3 { padding: 0 50px;}
+//.Homeblog h3 { text-align: center; }
+//
+//.Homeblog ul li a { display: block; font-weight: 400; background: white; margin-left: 30px; padding: 5px; }
+//.Homeblog ul li {
+//display: inline-flex;
+//font-weight: 700;
+//max-width: 33%;
+//color: white;
+//text-align: center;
+//padding: 10px;
+//}
+//
+//.fotorama__caption__wrap { display: none !important; }
+//
+//.Cdate {background: #0090CF; color: white; width: 60px; height: 60px; float: left; margin-right: 10px; }
+//.Cdate p { text-align: center; font-size: 18px; padding: 5px; }
+//.Cloc { color: #E83E3E;}
+//
+//.product-info-price .price-box { color: #0090CF; }
+//.product-info-main .product-reviews-summary .reviews-actions { visibility: hidden; }
+//.product-info-price .product-info-stock-sku { display: none; }
+//.product-info-main .product-social-links { display: none; }
+//.product-info-main .field.qty { display: none; }
+//.catalog-product-view .product-info-price span.price:after {
+//	content: 'per person, including VAT.';
+//	color: #333;
+//	font-size: 12px;
+//	display: block;
+//}
+//
+//.product-info-main .product-info-price { border: none; }
+//.product-info-main .product-add-form { padding: 20px; text-align: right; background: #F2F2F2; }
+//button#product-addtocart-button { border-radius: 30px; }
+//
+////  Mobile and Tablet
+//.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+//.testimonial { float: left; width: 100%; color: #0092D0; }
+//.logoBlock { display: none; }
+//.home_testimonials .testimonials_inner { min-height: 600px; }
+//.catalog-product-view .product.media { margin-bottom: 20px; }
+//.footer-col1 { width:100%; }
+//.footer-col2 { width:100%; }
+//.footer-col3 { width:100%; }
+//.Ctacts{color:#0092D0;}
+//.home_col.Logo{display:none;}
+//.logo{margin: 0 0 10px 80px;}
+//.page-header{border-bottom:5px solid #0092D0;}
+//}
+//
+//
+////    Desktop
+//.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+//.cms-home .header.content { display: none; }
+//.testimonial { float: left; width: 30.33333%; color: #0092D0; margin-right:3%; }
+//.home_testimonials .testimonials_inner { min-height: 250px; }
+//.page-layout-1column .product.media { width: 100% !important; }
+//.page-layout-1column .product-info-main { float: left; }
+//.catalog-product-view .product-info-price span.price:after { margin-top: -10px; }
+//.footer-col1{width:25%; float:left; margin-right: 10%;}
+//.footer-col2{width:45%; float:left;}
+//.footer-col3{width:15%; float:left;}
+//.item.title.active .switch { color: #0092d0 !important; font-weight: 700 !important; }
+//.page-header .block.block-search, .page-header .minicart-wrapper { display: none; }
+//.logoBlock { float: right; text-align:right;}
+//.logoBlock a { display: block; font-weight: 700; color: #0092d0; font-size: 2rem; }
+//.logoBlock a span { color: #E83E3E; }
+//}
+//
+
+//Blog styles
+
+
+//
+//    Desktop
+//--------------------------------------
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .page-layout-2columns-right {
+
+    .columns {
+      .column.main {
+        width: 66%;
+      }
+
+      .sidebar-main {
+        width: 33%;
+      }
+    }
+  }
+
+  .block-blog .block-title {
+    color: white;
+    font-weight: 700;
+    line-height: 1.1;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .block-blog .block-title strong {
+
+  }
+
+  .block-blog li a {
+    color: white;
+    font-weight: 700;
+    line-height: 1.1;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,37 @@
+<?php
+/**
+ * @var $block TargetTraining\WordPress\Block\Widget\LatestPosts
+ */
+?>
+<div class="latest-posts">
+    <h3 class="section-title"><?php echo $this->escapeHtml($block->getSectionTitle()); ?></h3>
+    <ul>
+        <?php foreach($block->getPosts() as $post): ?>
+            <li class="post">
+                <?php if ($image = $post->getFeaturedImage()): ?>
+                    <div class="post-image">
+                        <a href="<?php echo $post->getUrl() ?>">
+                            <img src="<?php echo $image->getMediumImage() ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>" />
+                        </a>
+                    </div>
+                <?php endif; ?>
+
+                <div class="post-detail">
+                    <div class="date">
+                        <?php echo $post->getPostDate() ?>
+                    </div>
+                    <div class="details">
+                        <a href="<?php echo $post->getUrl() ?>" class="title"><?php echo $this->escapeHtml($post->getPostTitle()) ?></a>
+                    </div>
+                    <div class="actions">
+                        <a href="<?php echo $post->getUrl(); ?>" class="link"><?php echo $block->getLinkText(); ?></a>
+                    </div>
+                </div>
+
+            </li>
+        <?php endforeach; ?>
+    </ul>
+    <div class="block-actions">
+        <a href="/blog" class="action more secondary"><?= __('View more Blogs')?></a>
+    </div>
+</div>

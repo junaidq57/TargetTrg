@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="MageWorx\OptionBase\Block\Product\View\Options">
+        <plugin name="options_title_id" type="TargetTraining\CustomOptions\Plugin\Block\Product\View\Options" sortOrder="1" disabled="false"/>
+    </type>
+    <preference for="Magento\Catalog\Block\Product\View\Options\Type\Select" type="TargetTraining\CustomOptions\Block\Product\View\Options\Type\Select" />
+    <preference for="MageWorx\OptionInventory\Plugin\Product\View\Options\Type\AroundSelectValuesHtml" type="TargetTraining\CustomOptions\Plugin\Product\View\Options\Type\AroundSelectValuesHtml" />
+</config>

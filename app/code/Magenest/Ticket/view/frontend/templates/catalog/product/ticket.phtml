@@ -1,0 +1,384 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: gialam
+ * Date: 7/21/2016
+ * Time: 11:36 AM
+ */
+?>
+<?php /** @var $block \Magenest\Ticket\Block\Product\Ticket */ ?>
+<?php
+$dataOption = $block->getOptionTicket();
+$symbol = $block->getCurrencySymbol();
+$enableTime = $block->enableTime();
+?>
+
+<?php if ($block->isEventTicketProduct() == true) {?>
+    <table>
+        <tr>
+            <th class="ticket_location_map" id="ticket_location_map" >
+            </th>
+        </tr>
+    </table>
+    <br>
+    <div class="ticket-options-wrapper" id="ticket-options-wrapper" data-hasrequired="* Required Fields">
+        <?php if (!empty($block->getLocation())) {?>
+            <?php if (sizeof($block->getLocation()) == 1) {?>
+                <?php echo $block->getLayoutSingle(); ?>
+            <?php } elseif (sizeof($block->getLocation()) > 1) {?>
+                <div class="fieldset" tabindex="0">
+                    <label class="label_rule" for="ticket_select_location">
+                        <span><?php echo 'Select Location'; ?></span>
+                    </label>
+                    <div class="field required">
+                        <div class="control">
+                            <select aria-required="true" id="ticket_select_location"  title="" data-selector="ticket_select_location" class="required product-custom-option-location admin__control-select">
+                                <option value=""><?php echo __('Select ...') ?></option>
+                                <?php  if (!empty($block->getLocation())) : ?>
+                                    <?php foreach ($block->getLocation() as $location) :?>
+                                        <option
+                                            id = "select_location"
+                                            name = "option_location"
+                                            value="<?php echo $location->getLocationId(); ?>"
+                                        >
+                                            <?php echo $location->getLocationTitle(); ?>
+                                        </option>
+                                    <?php endforeach ?>
+                                <?php endif ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            <?php }?>
+            <?php if ($enableTime == 1) { ?>
+            <div class="fieldset_date" id="fieldset_date"  tabindex="0">
+            </div>
+            <div class="fieldset_session" id="fieldset_session"  tabindex="0">
+            </div>
+            <?php } ?>
+        <?php }?>
+
+        <div class="fieldset" tabindex="0">
+            <?php foreach ($dataOption as $dataOptions) :?>
+                <?php $dataType = $block->getOptionTypeTicket()
+                    ->addFieldToFilter('option_id', $dataOptions->getOptionId());?>
+                <?php if ($dataOptions->getOptionInputType() == 'drop_down') : ?>
+                    <div class="field  <?php if ($dataOptions->getIsRequired() == 1) {
+                        echo 'required';
+} ?>">
+                        <label class="label_rule" for="ticket_select_form">
+                            <span><?php echo $dataOptions->getOptionTitle(); ?></span>
+                        </label>
+                        <div class="control">
+                            <select aria-required="true" id="ticket_select_form" name="options[2]" title="" data-selector="options[2]" class="<?php if ($dataOptions->getIsRequired() == 1) {
+                                echo 'required';
+} ?> product-custom-option admin__control-select">
+                                <option value=""><?php echo __('Select ...') ?></option>
+                                <?php  if (!empty($dataType->getData())) : ?>
+                                    <?php foreach ($dataType as $type) :?>
+                                        <option
+                                            id = "ticket_select"
+                                            class = "picker"
+                                            name = "drop_down_option"
+                                            value="<?php echo $type->getPrice()."_".$type->getTitle(); ?>"
+                                        >
+                                            <?php echo $type->getTitle()." + ".$symbol." ".$type->getPrice(); ?>
+                                        </option>
+                                    <?php endforeach ?>
+                                <?php endif ?>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <?php elseif ($dataOptions->getOptionInputType() == 'checkbox') : ?>
+                     <div class="field <?php if ($dataOptions->getIsRequired() == 1) {
+                            echo 'required';
+} ?>">
+                        <label class="label_rule" for="ticket_option_checkbox">
+                            <span><?php echo $dataOptions->getOptionTitle(); ?></span>
+                        </label>
+                          <div class="control">
+                            <div class="ticket_option_checkbox nested" id="ticket_option_checkbox">
+                                <?php  if (!empty($dataType->getData())) : ?>
+                                    <?php foreach ($dataType as $type) : ?>
+                                        <div class="field choice admin__field admin__field-option <?php if ($dataOptions->getIsRequired() == 1) {
+                                            echo 'required';
+} ?>">
+                                        <input
+                                            id = "<?php echo $type->getTitle()?>"
+                                            class="checkbox admin__control-checkbox <?php if ($dataOptions->getIsRequired() == 1) {
+                                                echo 'required';
+} ?> product-custom-option"
+                                            name = "option[checkbox][]"
+                                            type="checkbox"
+                                            value="<?php echo $type->getPrice(); ?>"
+                                        >
+                                        <?php echo $type->getTitle()." + ".$symbol." ".$type->getPrice(); ?>
+                                        <?php if ($type->getDescription()) {?>
+                                            <div class="tooltip">
+                                                <img src="<?php echo $block->getViewFileUrl('Magenest_Ticket::images/icon.png'); ?>"
+                                                     width="30" height="30"/>
+                                                <span class="tooltiptext"><?php echo $type->getDescription(); ?></span>
+                                            </div>
+                                        <?php }?>
+                                        <br>
+                                        </div>
+                                    <?php endforeach ?>
+                                <?php endif ?>
+                            </div>
+                          </div>
+                    </div>
+                        <br>
+                    <?php elseif ($dataOptions->getOptionInputType() == 'radio_buttons') :?>
+                        <div class="field <?php if ($dataOptions->getIsRequired() == 1) {
+                            echo 'required';
+} ?>">
+                            <label class="label_rule" for="select_3">
+                                <span><?php echo $dataOptions->getOptionTitle(); ?></span>
+                            </label>
+                            <div class="control">
+                            <div class="ticket_option_radio nested" id="ticket_option_radio">
+                                <div class="field choice admin__field admin__field-option required">
+                                    <?php  if (!empty($dataType->getData())) : ?>
+                                    <?php foreach ($dataType as $type) : ?>
+                                        <input
+                                            aria-required="true"
+                                            class="radio admin__control-radio  <?php if ($dataOptions->getIsRequired() == 1) {
+                                                echo 'required';
+} ?> product-custom-option"
+                                            id = "ticket_radio"
+                                            name = "additional_options[radio][radio_select]"
+                                            type="radio"
+                                            value="<?php echo $type->getPrice().'_'.$type->getTitle(); ?>"
+                                        >
+                                        <?php echo $type->getTitle()." + ".$symbol." ".$type->getPrice(); ?>
+                                        <?php if ($type->getDescription()) {?>
+                                            <div class="tooltip">
+                                                <img src="<?php echo $block->getViewFileUrl('Magenest_Ticket::images/icon.png'); ?>"
+                                                     width="30" height="30"/>
+                                                <span class="tooltiptext"><?php echo $type->getDescription(); ?></span>
+                                            </div>
+                                        <?php }?>
+                                        <br>
+                                    <?php endforeach ?>
+                                <?php endif ?>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <br>
+                    <?php endif ?>
+                <?php endforeach ?>
+        </div>
+    </div>
+    <input id="product_ticket_price" name="additional_options[ticket_price]" style="display: none">
+    <input id="drop_down_data" name="additional_options[dropdow]" style="display: none">
+    <input id="product_ticket_location" name="additional_options[ticket_location]" style="display: none">
+    <input id="product_ticket_date" name="additional_options[ticket_date]" style="display: none">
+    <input id="product_ticket_session" name="additional_options[ticket_session]" style="display: none">
+    <input id="product_ticket_test" name="additional_options[checkbox]" style="display: none">
+<?php }?>
+
+<script>
+    require([
+        "jquery",
+        "jquery/ui"
+    ], function (
+        $
+    ) {
+        'use strict';
+        var selectLocation = document.getElementById("ticket_select_location");
+        var returnDate = '<?php echo $block->getReturnDate(); ?>';
+        var returnSession= '<?php echo $block->getReturnSession(); ?>';
+        var select = document.getElementById("ticket_select_form");
+        var symbol = '<?php echo $symbol ?>';
+        var temp = 0;
+        var temp1 = 0;
+        var temp2 = 0;
+        var sum = 0;
+        var productPrice = document.getElementById("product-price-" + <?php echo $block->getCurrentProductId(); ?>);
+        var currentPrice = productPrice.getAttribute("data-price-amount");
+        var radio = document.getElementById("ticket_option_radio");
+        radio = $(radio).find('input');
+        var checkbox = document.getElementById("ticket_option_checkbox");
+        var productPriceTicket = document.getElementById("product_ticket_price");
+        var dropData = document.getElementById("drop_down_data");
+        var optionLocation = document.getElementById("product_ticket_location");
+        var optionDate = document.getElementById("product_ticket_date");
+        var optionSession = document.getElementById("product_ticket_session");
+        var apiKey = '<?php echo $block->getGoogleApiKey() ?>';
+
+        checkbox = $(checkbox).find('input');
+        $(select).change(function() {
+            var strDrop = $(this).val();
+            console.log(strDrop);
+            var productPriceSpan = $(productPrice).find('span');
+            if (!strDrop) {
+                 strDrop = '0';
+            }
+            var resDrop = strDrop.split("_");
+            currentPrice = parseFloat(currentPrice) + parseFloat(resDrop[0]) - parseFloat(temp1);
+            currentPrice = currentPrice.toFixed(2);
+            temp1 = resDrop[0];
+            productPriceSpan.text(symbol + currentPrice);
+            productPriceTicket.value = currentPrice;
+            dropData.value = resDrop[1];
+
+        });
+        $(radio).each(function(index, element) {
+            $(element).change(function() {
+                var str = $(this).val();
+                var res = str.split("_");
+                currentPrice = parseFloat(currentPrice) + parseFloat(res[0]) - parseFloat(temp);
+                currentPrice = currentPrice.toFixed(2);
+                temp = res[0];
+                var productPriceSpan = $(productPrice).find('span');
+                productPriceSpan.text(symbol + currentPrice);
+                productPriceTicket.value = currentPrice;
+            });
+        });
+        var optionTest = document.getElementById("product_ticket_test");
+        var obj = {};
+        $(checkbox).each(function(index, element) {
+            $(element).change(function() {
+                if (this.checked == true) {
+                    currentPrice = parseFloat(currentPrice) + parseFloat($(this).val());
+                    obj[$(this).attr('id')] = $(this).val();
+                } else {
+                    currentPrice = parseFloat(currentPrice) - parseFloat($(this).val());
+                    var key = $(this).attr('id');
+                    delete obj[key];
+                }
+                optionTest.value = JSON.stringify(obj);
+                currentPrice = currentPrice.toFixed(2);
+                var productPriceSpan = $(productPrice).find('span');
+                productPriceSpan.text(symbol + currentPrice);
+                productPriceTicket.value = currentPrice;
+            });
+        });
+        $(selectLocation).change(function() {
+            $("#fieldset_date").empty();
+            $("#fieldset_session").empty();
+            $("#ticket_location_map").empty();
+            optionLocation.value = $(this).val();
+            var locationSendRequest = returnDate + '?location_id=' + $(this).val();
+            getDateData(locationSendRequest);
+        });
+
+        function getDateData(locationSendRequest) {
+            $.ajax({
+                url: locationSendRequest,
+                type: "POST",
+                contentType: false,
+                cache: false,
+                processData:false,
+                success: function(response)
+                {
+                    if(response.length > 1) {
+                        var dateResponseArray = JSON.parse(response);
+                        var dateTemplate = " ";
+                        var locationTemplate = " ";
+                        if (dateResponseArray['date_data'].length > 0) {
+                            if (dateResponseArray['date_data'].length <= 1) {
+                                dateTemplate += ' <label class="label_rule" for="ticket_select_date">';
+                                dateTemplate += ' <span  style="font-size: 130%">'+'Date: '+ dateResponseArray['date_data'][0]['date']+'</span>';
+                                dateTemplate += ' </label>';
+                                optionDate.value = dateResponseArray['date_data'][0]['date_id'];
+                                $("#fieldset_session").empty();
+                                var dateSendRequest = returnSession + '?date_id=' + dateResponseArray['date_data'][0]['date_id'];
+                                getSessionData(dateSendRequest);
+
+                            } else {
+                                dateTemplate += ' <label class="label_rule" for="ticket_select_date">';
+                                dateTemplate += ' <span>'+'Select Date'+'</span>';
+                                dateTemplate += ' </label>';
+                                dateTemplate += '<div class="field required">';
+                                dateTemplate += '<div class="control">';
+                                dateTemplate += '<select aria-required="true" id="ticket_select_date"  title="" data-selector="ticket_select_date" class="required product-custom-option-date admin__control-select" >';
+                                dateTemplate += '<option value="">'+'Select...'+'</option>';
+                                for (var i = 0; i < dateResponseArray['date_data'].length; i++) {
+
+                                    dateTemplate += '<option value="'
+                                        + dateResponseArray['date_data'][i]['date_id']
+                                        + '">'
+                                        + dateResponseArray['date_data'][i]['date']
+                                        + '</option>';
+                                }
+                                dateTemplate += '</select>';
+                                dateTemplate += '</div>';
+                                dateTemplate += '</div>';
+                            }
+
+                        }
+                        if (dateResponseArray['location_data']) {
+                            var locationDetail = dateResponseArray['location_data'].replace(/\s+/g, '+');
+                            var srcMap = 'https://www.google.com/maps/embed/v1/place?key='+apiKey+'&q='+locationDetail;
+                            locationTemplate += '<iframe width="75%"  height="200" frameborder="1" style="border:0" ' +
+                                'src=' + srcMap +
+                                ' allowfullscreen >';
+                            locationTemplate += '</iframe>';
+                        }
+                        $("#ticket_location_map").append(locationTemplate);
+                        $("#fieldset_date").append(dateTemplate);
+                        $("#ticket_select_date").change(function() {
+                            optionDate.value = $(this).val();
+                            $("#fieldset_session").empty();
+                            var dateSendRequest = returnSession + '?date_id=' + $(this).val();
+                            getSessionData(dateSendRequest);
+                        });
+
+                    }
+                },
+                showLoader: true
+            });
+        }
+
+        function getSessionData(dateSendRequest) {
+            $.ajax({
+                url: dateSendRequest,
+                type: "POST",
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (response) {
+                    if (response.length > 1) {
+                        var sessionResponseArray = JSON.parse(response);
+                        var sessionTemplate = " ";
+                        if (sessionResponseArray.length > 0) {
+                            if (sessionResponseArray.length <= 1) {
+                                sessionTemplate += ' <label class="label_rule" for="ticket_select_session">';
+                                sessionTemplate += ' <span style="font-size: 130%">' + 'Time : ' +sessionResponseArray[0]['time_session']+'</span>';
+                                sessionTemplate += ' </label>';
+                                optionSession.value = sessionResponseArray[0]['session_id'];
+                            } else {
+                                sessionTemplate += ' <label class="label_rule" for="ticket_select_session">';
+                                sessionTemplate += ' <span>' + 'Select Time' + '</span>';
+                                sessionTemplate += ' </label>';
+                                sessionTemplate += '<div class="field required">';
+                                sessionTemplate += '<div class="control">';
+                                sessionTemplate += '<select aria-required="true" id="ticket_select_session" title="" data-selector="ticket_select_session" class="required product-custom-option-date admin__control-select" >';
+                                sessionTemplate += '<option value="">' + 'Select...' + '</option>';
+                                for (var i = 0; i < sessionResponseArray.length; i++) {
+
+                                    sessionTemplate += '<option value="'
+                                        + sessionResponseArray[i]['session_id']
+                                        + '">'
+                                        + sessionResponseArray[i]['time_session']
+                                        + '</option>';
+                                }
+                                sessionTemplate += '</select>';
+                                sessionTemplate += '</div>';
+                                sessionTemplate += '</div>';
+                            }
+                        }
+                        $("#fieldset_session").append(sessionTemplate);
+                        $("#ticket_select_session").change(function() {
+                            optionSession.value = $(this).val();
+                        });
+                    }
+                },
+                showLoader: true
+            });
+        }
+    });
+</script>

@@ -1,0 +1,87 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="head.additional">
+        <block class="Magento\Framework\View\Element\Template" name="gtm.head" before="-" template="Magento_Theme::html/gtm_head.phtml" />
+    </referenceContainer>
+
+    <referenceContainer name="after.body.start">
+        <block class="Magento\Framework\View\Element\Template" name="gtm.body" before="-" template="Magento_Theme::html/gtm_body.phtml" />
+    </referenceContainer>
+    <body>
+        <move element="authorization-link-login" destination="header.links" before="register-link"/>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_file" xsi:type="string">images/logo.png</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="header.links">
+            <block class="Magento\Customer\Block\Account\AuthorizationLink" name="authorization-link-login" template="Magento_Customer::account/link/authorization.phtml">
+                <arguments>
+                    <argument name="sortOrder" xsi:type="number">10</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceContainer name="header.panel">
+            <block class="Magento\Framework\View\Element\Template" name="basket" template="Magento_Theme::basket.phtml" after="header.links"/>
+        </referenceContainer>
+
+        <referenceContainer name="footer-container">
+            <block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" as="subscribe" before="-" template="Magento_Newsletter::subscribe.phtml"/>
+            <block class="Magento\Theme\Block\Html\Footer" name="footer" template="html/footer.phtml"/>
+        </referenceContainer>
+
+        <referenceContainer name="header.container">
+            <block class="Magento\Cms\Block\Block" name="top.header.static" before="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">top_header_static</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="header-wrapper">
+		    <block class="Magento\Cms\Block\Block" name="logo-blk" after="logo">
+		        <arguments>
+		            <argument name="block_id" xsi:type="string">logo-blk</argument>
+		        </arguments>
+			</block>
+		    <block class="Magento\Cms\Block\Block" name="header-phone-email" after="-">
+		        <arguments>
+		            <argument name="block_id" xsi:type="string">header_phone_email</argument>
+		        </arguments>
+			</block>
+		</referenceContainer>
+        <referenceContainer name="page.top">
+            <referenceBlock name="store.links" remove="true" />
+        </referenceContainer>
+        <referenceContainer name="catalog.topnav">
+            <block class="Magento\Cms\Block\Block" name="menu.item.static" after="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">top_nav_block</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceContainer name="header.container">
+            <block class="TargetTraining\EventFinder\Block\Widget" name="top.event.finder" as="top_event_finder" after="-"/>
+
+            <referenceBlock name="top.event.finder">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="string">TargetTraining_EventFinder::widget/header-event-finder.phtml</argument>
+                </action>
+            </referenceBlock>
+
+        </referenceContainer>
+
+        <move element="navigation.sections" destination="header.panel.wrapper" after="logo" />
+        <move element="logo" destination="header.panel.wrapper" before="-" />
+        <move element="header.panel" destination="header.panel.wrapper" after="navigation.sections" />
+        <move element="minicart" destination="header.panel" after="-" />
+
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="view.addto.compare" remove="true" />
+        <referenceBlock name="view.addto.wishlist" remove="true" />
+        <referenceBlock name="wishlist_sidebar" remove="true" />
+        <referenceBlock name="register-link" remove="true" />
+        <referenceBlock name="header-wrapper" remove="true" />
+
+    </body>
+</page>

@@ -1,0 +1,111 @@
+<?php
+$orderItems = $block->getOrderItems();
+?>
+<?php if($orderItems):?>
+<div>
+	<div class="admin__data-grid-header admin__data-grid-toolbar">
+		<div class="admin__data-grid-header-row">
+			<div class="admin__data-grid-export">
+				<label class="admin__control-support-text" for="">Export to:</label>
+				<select name="" id="" class="admin__control-select">
+					<option value="csv">CSV</option>
+				</select>
+				<button id="export" title="Export" type="button" class="action-default scalable task">
+					<span>Export</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<?php if(count($orderItems) != 0): ?>
+		<div class="admin__data-grid-wrap admin__data-grid-wrap-static">
+			<table class="data-grid" id="">
+				<thead>
+					<tr>
+						<th class="data-grid-th no-link"><span><?php echo __('Course'); ?></span></th>
+						<th class="data-grid-th no-link"><span><?php echo __('Venue'); ?></span></th>
+						<th class="data-grid-th no-link"><span><?php echo __('Date'); ?></span></th>
+						<th class="data-grid-th no-link"><span><?php echo __('Leader'); ?></span></th>
+						<th class="data-grid-th no-link"><span><?php echo __('Attendee'); ?></span></th>
+						<th class="data-grid-th no-link"><span><?php echo __('Payment Method'); ?></span></th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<?php  foreach($orderItems as $items): ?>
+						<?php  foreach($items as $item): ?>
+							<tr title="#" class="even">
+                                <td class="col-orders">
+                                    <?php  echo $block->getAlreadyData($item['product_name']); ?>
+                                </td>
+                                <td class="col-orders">
+                                    <?php  echo $block->getAlreadyData($item['course_location']); ?>
+                                </td>
+                                <td class="col-orders">
+                                    <?php echo $block->getAlreadyData($item['option_date']); ?>
+                                </td>
+                                <td class="col-orders">
+                                    <?php  echo $block->getAlreadyData($item['leader']); ?>
+                                </td>
+                                <td class="col-orders">
+                                    <?php  echo $block->getAlreadyData($item['attendee']); ?>
+                                </td>
+                                <td class="col-orders">
+                                    <?php  echo $block->getAlreadyData($item['payment_method']); ?>
+                                </td>
+							</tr>
+						<?php  endforeach;?>
+					<?php  endforeach;?>
+
+				</tbody>
+			</table>
+
+		</div>
+	<?php endif;?>
+</div>
+<?php 
+	$filter = $block->getFilterData();
+	$currentPage = $block->getCurrentPage();
+	if(!$currentPage){
+		$currentPage = '';
+	}
+?>
+<?php if($currentPage): ?>
+	<script>
+		require(['jquery'], function ($) {
+			$('#export').on('click', function(){
+				window.location.href = '<?php echo $this->getUrl('customize_report/report_sales/OrderDetailsExportCsv/'); ?>'+'filter/'+'<?php echo $filter ?>'+'/?p='+'<?php echo $currentPage;?>';
+	            return false;
+			});
+		});
+	</script>
+<?php else: ?>	
+	<script>
+		require(['jquery'], function ($) {
+			$('#export').on('click', function(){
+				window.location.href = '<?php echo $this->getUrl('customize_report/report_sales/OrderDetailsExportCsv/'); ?>'+'filter/'+'<?php echo $filter ?>'+'/?p=1';
+	            return false;
+			});
+		});
+	</script>
+<?php endif;?>
+
+<?php else: ?>
+	<?php echo __('Please choose a date range and show report');?>
+<?php endif; ?>
+
+<?php
+    $sales_report_from = date("d/m/Y");
+    $sales_report_to = date("d/m/Y", strtotime('+1 months'));
+?>
+<script type="text/javascript">
+    requirejs(['jquery', 'domReady!'], function ($) {
+        var date_from = '<?php echo $sales_report_from; ?>';
+        var date_to = '<?php echo $sales_report_to; ?>';
+        if (!$('#sales_report_from').val()){
+            $('#sales_report_from').attr('value', date_from).trigger('change');
+        }
+        if (!$('#sales_report_to').val()){
+            $('#sales_report_to').attr('value', date_to).trigger('change');
+        }
+    });
+</script>

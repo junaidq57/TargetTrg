@@ -1,0 +1,33 @@
+<?php
+/**
+ * Copyright © 2015 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ *
+ * Magenest_Ticket extension
+ * NOTICE OF LICENSE
+ *
+ * @category  Magenest
+ * @package   Magenest_Ticket
+ * @author ThaoPV <thaopw@gmail.com>
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /** @var $block \Magenest\Ticket\Block\Adminhtml\Event\Edit\Tab\PrintTicket */ ?>
+<?php
+$productId = $block->getEvent();
+if (isset($productId))
+{
+    $id = $productId;
+} else {
+    $id = 0;
+}
+?>
+<div class="print_ticket_file">
+    <span>
+        <input type="button" id="print_content" style="float: right" class="action-secondary action-add"
+               onclick="window.location.href='<?php echo $block->getPrintTicketUrl($productId) ?>'" value="Print PDF"/>
+    </span>
+</div> <br>

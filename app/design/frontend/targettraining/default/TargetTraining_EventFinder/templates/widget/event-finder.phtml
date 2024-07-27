@@ -1,0 +1,52 @@
+<?php
+/**
+ * @var $block TargetTraining\EventFinder\Block\Widget
+ */
+?>
+
+<div class="event-finder">
+    <h3>
+        <?php echo $block->escapeHtml(__('Course Finder')) ?>
+        <a href="<?php echo $block->escapeUrl($block->getFormAction()) ?>"><span class="text-right"><?php echo $block->escapeHtml(__('See all >')) ?></span></a>
+    </h3>
+    <form id="form-find-courses" class="form" action="<?php echo $block->escapeUrl($block->getFormAction()) ?>" id="" method="post">
+        <fieldset class="fieldset">
+            <div class="field location">
+                <div class="control">
+                    <select class="select" name="location" id="location">
+                        <option value="0"><?php echo __('--- Select Location ---') ?></option>
+                        <?php foreach ($block->getAvailableLocations() as $location): ?>
+                            <option value="<?php echo $location['value'] ?>"><?php echo $location['label'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+            <div class="field type">
+                <div class="control">
+                    <select class="select" name="type" id="type">
+                        <option value="0"><?php echo __('--- Select Course Type ---') ?></option>
+                        <?php foreach ($block->getAvailableTypes() as $type): ?>
+                            <option value="<?php echo $type['value'] ?>"><?php echo $type['label'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button type="submit" id="find-courses" title="" class="action submit primary">
+                    <span><?php echo $block->escapeHtml(__('Find Courses')) ?></span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    require(['jquery'], function ($){
+        $("#find-courses").click(function(e) {
+            e.preventDefault();
+            var param = "<?= $block->getFormAction() ?>"+"?location="+jQuery('#location').val()+"&type="+jQuery('#type').val();
+            $('#form-find-courses').attr('action', param).submit();
+        });
+    });
+</script>

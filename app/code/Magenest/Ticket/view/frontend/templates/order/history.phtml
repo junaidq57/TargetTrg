@@ -1,0 +1,80 @@
+<?php
+/**
+ * Copyright © 2015 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ *
+ * Magenest_Ticket extension
+ * NOTICE OF LICENSE
+ *
+ * @category  Magenest
+ * @package   Magenest_Ticket
+ * @author ThaoPV <thaopw@gmail.com>
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /** @var $block \Magenest\Ticket\Block\Order\History */ ?>
+
+<?php $_tickets = $block->getTickets();?>
+<?php echo $block->getChildHtml('info');?>
+<?php if ($_tickets && count($_tickets)): ?>
+    <div class="table-wrapper ticket-orders-history">
+        <table class="data table table-order-items history" id="my-orders-table">
+            <caption class="table-caption"><?php /* @escapeNotVerified */ echo __('Tickets') ?></caption>
+            <thead>
+            <tr>
+                <th scope="col" class="col id"><?php /* @escapeNotVerified */ echo __('Order #') ?></th>
+                <th scope="col" class="col name"><?php /* @escapeNotVerified */ echo __('Event Name') ?></th>
+                <th scope="col" class="col date"><?php /* @escapeNotVerified */ echo __('Date Event') ?></th>
+                <th scope="col" class="col time"><?php /* @escapeNotVerified */ echo __('Time') ?></th>
+                <th scope="col" class="col location"><?php /* @escapeNotVerified */ echo __('Location') ?></th>
+                <th scope="col" class="col map"><?php /* @escapeNotVerified */ echo __('Google Map') ?></th>
+                <th scope="col" class="col price"><?php /* @escapeNotVerified */ echo __('Detail') ?></th>
+                <th scope="col" class="col actions">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            /** @var \Magenest\Ticket\Model\Ticket|\Magenest\Ticket\Model\Event $_ticket */
+            foreach ($_tickets as $_ticket): ?>
+                <?php
+                $info = $block->getDataTicket($_ticket->getInformation());
+                ?>
+                <tr>
+                    <td data-th="<?php echo $block->escapeHtml(__('Order #')) ?>" class="col id">
+                        <a href="<?php /* @escapeNotVerified */ echo $block->getViewUrl($_ticket) ?>" class="action view">
+                            <span><?php /* @escapeNotVerified */ echo $_ticket->getOrderIncrementId() ?></span>
+                        </a>
+                    </td>
+                    <td data-th="<?php echo $block->escapeHtml(__('Event Name')) ?>" class="col event name"><?php /* @escapeNotVerified */ echo $_ticket->getEventName() ?></td>
+
+                    <td data-th="<?php echo /* @escapeNotVerified */ $block->escapeHtml(__('Date Event')) ?>" class="col date">
+                        <span><?php echo $info['date']; ?></span>
+                    </td>
+                    <td data-th="<?php echo /* @escapeNotVerified */ $block->escapeHtml(__('Time')) ?>" class="col time">
+                        <span><?php echo $info['start_time'].$info['end_time']; ?></span>
+                    </td>
+                    <td data-th="<?php echo /* @escapeNotVerified */ $block->escapeHtml(__('Location')) ?>" class="col location">
+                        <span><?php echo $info['location_title'];?></span>
+                    </td>
+                    <td data-th="<?php echo /* @escapeNotVerified */ $block->escapeHtml(__('Google Map')) ?>" class="col map">
+                        <iframe  width="200"  height="150" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=<?php echo $block->getGoogleApiKey()?>&q=<?php echo str_replace (' ', '+',$info['location_detail'])?>" allowfullscreen></iframe>
+                    </td>
+                    <td data-th="<?php echo /* @escapeNotVerified */ $block->escapeHtml(__('Actions')) ?>" class="col actions">
+                        <a href="<?php /* @escapeNotVerified */ echo $block->getPrintTicketUrl($_ticket) ?>" class="action view">
+                            <span><?php /* @escapeNotVerified */ echo __('Print Ticket') ?></span>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="tickets-events-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+    <?php endif ?>
+<?php else: ?>
+    <div class="message info empty"><span><?php /* @escapeNotVerified */ echo __('You have placed no any tickets.'); ?></span></div>
+<?php endif ?>

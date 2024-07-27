@@ -1,0 +1,142 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    //  Newsletter subscription
+    .block.newsletter {
+        padding: 0 20px;
+        margin-bottom: 35px;
+
+        .form.subscribe {
+            display: table;
+            width: 100%;
+        }
+        .content{
+            max-width: @layout__max-width - 40px;
+            margin: 0 auto;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 45px 0 25px;
+        }
+
+        .fieldset {
+            display: table-cell;
+            margin: 0;
+            padding: 0;
+            vertical-align: top;
+        }
+
+        .field {
+            margin: 0;
+
+            .control {
+                float: right;
+                width: 50%;
+                position: relative;
+                padding-right: 177px;
+
+                .actions{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 167px;
+                }
+            }
+        }
+
+        input {
+            height: 54px;
+            padding: 5px 20px;
+            border-radius: 4px;
+            font: 18px @font-base;
+        }
+
+        .title {
+            display: none;
+        }
+
+        .label {
+            font: bold 24px @font-title;
+            float: left;
+            width: 50%;
+            padding-right: 10px;
+            margin-top: 12px;
+        }
+        .action.subscribe {
+            width: 100%;
+            height: 54px;
+            font: bold 20px @font-title;
+            color: @color-white;
+            text-transform: uppercase;
+            border-radius: 4px;
+            background: #D33130;
+            border: none;
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l) {
+    .block.newsletter {
+        margin-bottom: 20px;
+
+        .label{
+            float: none;
+            text-align: center;
+            font-size: 15px;
+            width: 100%;
+            display: block;
+            margin: 0 0 10px;
+        }
+        .content{
+            padding: 20px 0 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .field{
+            .control{
+                float: none;
+                width: 100%;
+                padding-right: 100px;
+
+                .actions{
+                    width: 100px;
+                }
+            }
+        }
+        input{
+            border-radius: 4px 0 0 4px;
+            height: 48px;
+        }
+        .action.subscribe{
+            border-radius: 0 4px 4px 0;
+            height: 48px;
+            font-size: 16px;
+            line-height: 20px;
+            padding: 7px 0;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .block.newsletter{
+        margin-bottom: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0 10px;
+
+        .content{
+            border: none;
+        }
+        input{
+            padding: 0 10px;
+        }
+    }
+}

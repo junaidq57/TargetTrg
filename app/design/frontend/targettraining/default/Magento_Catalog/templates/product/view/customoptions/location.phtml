@@ -1,0 +1,20 @@
+<?php
+    $currentProduct = $this->helper('TargetTraining\Ticket\Helper\Data')->getCurrentProduct();
+    if ($currentProduct && $currentProduct->getCourseLocation()) { ?>
+        <div class="location">
+        <span class="location-title"><?= $currentProduct->getAttributeText('course_location');?></span>
+        </div>   
+
+<?php }
+if ($currentProduct && $currentProduct->getIshalfday()) { ?>
+
+        <h4> half day <span> course </span> </h4>
+
+<?php
+   }
+
+if ($currentProduct && $currentProduct->getIsinhousecourse()) { ?>
+
+        <h4> In-House <span> Option Available</span> </h4>
+  <?php  }  
+?>

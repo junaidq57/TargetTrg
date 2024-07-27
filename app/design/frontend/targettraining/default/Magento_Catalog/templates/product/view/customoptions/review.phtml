@@ -1,0 +1,392 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->get(\Magento\Store\Model\StoreManagerInterface::class);
+$mediaUrl = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA)."wysiwyg/";
+
+
+
+ if ($this->getAttributeSetName() == 'Course') { ?>
+
+    <div class="featured-review">
+        <div class="quote"> 
+        <div class="quote_title">Testimonial - </div>     
+        <img src="<?php echo $mediaUrl."green-stars-tp.png" ?>" >
+        <p class="content"><?php echo $block->getCourseQuote(); ?></p>
+        <span class="author"><?php echo $block->getCourseQuoter(); ?></span>
+        </div>
+        <div class="course_del"><strong>Meet your trainer(s)</strong></div>
+    <div class="trainer_items">
+<?php 
+
+    $product = $block->getProduct();
+    $data = explode(',',$product->getData('trainerimages'));
+    foreach($data as $value):            
+  ?>
+  <?php 
+    $attr = $product->getResource()->getAttribute('trainerimages');
+    if ($attr->usesSource()): 
+  ?>
+        <?php 
+            $option_value = $attr->getSource()->getOptionText($value);
+        ?>
+
+        <?php if($option_value == "RALPH MOODY"){ ?>
+            
+            <a href="javascript:void(0)" id="ralp_more" title="Ralph Moody">
+            <h5> Ralph Moody </h5><img src="<?php echo $mediaUrl."Ralph-Moody.png" ?>" >
+            </a>
+        <?php }
+        if ($option_value == "SCOTT FRASER") { ?>
+            
+            <a href="javascript:void(0)" id="scott_more" title="Scott Fraser"><h5> Scott Fraser </h5><img src="<?php echo $mediaUrl."Scott-Fraser.png" ?>" ></a>
+        <?php }
+         if ($option_value == "CLAIRE MOODY") { ?>
+            
+            <a href="javascript:void(0)" id="moody_more" title="Claire Moody"><h5> Claire Moody </h5><img src="<?php echo $mediaUrl."Claire-Moody.png" ?>" ></a>
+        <?php }
+         if ($option_value == "ZOE POULTON") { ?>
+            
+            <a href="javascript:void(0)" id="zoe_more" title="Zoe Poulton"><h5> Zoe Poulton </h5><img src="<?php echo $mediaUrl."Zoe-Poulton.png" ?>" ></a>
+        <?php }
+         if ($option_value == "Marcus Dimbleby") { ?>
+            
+            <a href="javascript:void(0)" id="marcus_more" title="Marcus Dimbleby"><h5>Marcus Dimbleby </h5><img src="<?php echo $mediaUrl."Marcus-Dimbleby.png" ?>" ></a>
+        <?php }
+         if ($option_value == "Martina Neville") { ?>
+            
+            <a href="javascript:void(0)" id="martina_more" title="Martina Neville"><h5> Martina Neville </h5><img src="<?php echo $mediaUrl."Martina-Neville.png" ?>" ></a>
+        <?php }
+         if ($option_value == "Rob Hames") { ?>
+            
+            <a href="javascript:void(0)" id="rob_more" title="Rob Hames"><h5> Rob Hames </h5><img src="<?php echo $mediaUrl."Rob-Hames.png" ?>" ></a>
+
+        <?php }
+         if ($option_value == "CHRIS BREEDON") { ?>
+            
+            <a href="javascript:void(0)" id="chris_more" title="Chris Breedon"><h5> Chris Breedon </h5><img src="<?php echo $mediaUrl."Chris-Breedon.png" ?>" ></a>
+        <?php }?>
+
+
+
+<?php
+     endif;
+  endforeach;?>
+
+  </div></div>
+
+
+<?php
+}
+
+
+else { ?>
+
+
+
+    <div class="product-image">
+        <?php
+        $product = $this->getProduct();
+        $imageUrl = $this->helper('Magento\Catalog\Helper\Image')
+            ->init($product, 'product_base_image')
+            ->constrainOnly(TRUE)
+            ->keepAspectRatio(TRUE)
+            ->keepTransparency(TRUE)
+            ->keepFrame(FALSE)
+            ->getUrl();
+        ?>
+        <img src="<?php echo $imageUrl;?>" class="view-product-image" alt="<?php echo $product->getName()?>">
+    </div>
+
+<?php } ?>
+
+<div id="popup-modals" class="cst__all_modal_class"  style="display:none;">
+    
+    <div id="hb_dm">
+        <div class="row">
+            <div class="container" style="display: flex;flex-direction: column;align-items: center;">
+            <h2 class="mt-5 mb-5">Ralph Moody</h2>
+                <div class="col-md-4 img">
+                    <img src="<?php echo $mediaUrl."Ralph-Moody.png" ?>"/>
+                </div>
+                
+                <div class="col-md-8 text">
+                    <p>Ralph is a Master Trainer and specialises in 'Train the Trainer', 'Leadership and Management Development,' and key soft skill areas addressing the critical areas that transform good leaders into outstanding ones. </p>
+                    <p>Ralph's methodology focuses to boost confidence, strengthen communication skills, and foster a culture of continual development, recognising that good leadership extends beyond competence in a particular subject. </p>
+                    <p>Whether you want to improve your training skills or extend your leadership knowledge, Ralph is a facilitator of learning and provides practical insights and solutions, all supported by Target Training's 5-star Trustpilot rating. Join Ralph for these transforming sessions and take the first step towards realising your full potential as a leader and trainer.</p>
+                    <!--<div class=""><a href="/about-us/the-team#ralph_moody" class="">More about Ralp Moody</a></div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<div id="popup-modals-hb_ui" class="cst__all_modal_class" style="display:none;">
+    
+    <div id="hb_ui">
+        <div class="row">
+            <div class="container" style="display: flex;flex-direction: column;align-items: center;">
+            <h2 class="mt-5 mb-5">Scott Fraser</h2>
+                <div class="col-md-4 img">
+                    <img src="<?php echo $mediaUrl."Scott-Fraser.png" ?>"/>
+                </div>
+                
+                <div class="col-md-8 text">
+                    <p>Scott oversees our revolutionary Train the Trainer courses. Recognising the widespread fear of public speaking, Scott discusses his journey from battling self-doubt and audience apprehension to establishing a unique strategy that transformed his nervousness into fun and confidence.</p>
+                    <p>He educates others utilising a five-step technique that addresses public speaking anxiety, with the goal of instilling super-hero-like confidence, creating riveting material, and cultivating an engaging relationship with any audience. </p>
+                    <p>Scott's technique transforms typical, uninspired presentations into lively, impactful communication. Whether you're lacking confidence, fearing your next public speaking engagement, or simply want to improve your presentation skills, Scott's method offers not only career-changing skills but also life-changing confidence. </p>
+                    <p>Scott is here to guide people who are ready to conquer their public speaking anxieties and substantially enhance their training capabilities through each stage of the journey to long-term confidence and success.</p>
+                    <!--<div class=""><a href="/about-us/the-team#scott_fraser" class="">More about Scott Fraser</a></div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="popup-modals-hb_pm" class="cst__all_modal_class" style="display:none;">
+    
+    <div id="hb_ui">
+        <div class="row">
+            <div class="container" style="display: flex;flex-direction: column;align-items: center;">
+            <h2 class="mt-5 mb-5">Claire Moody</h2>
+                <div class="col-md-4 img">
+                    <img src="<?php echo $mediaUrl."Claire-Moody.png" ?>"/>
+                </div>
+                
+                <div class="col-md-8 text">
+                    <p>Claire is an outstanding professional coach and trainer known for achieving amazing outcomes via her unwavering inspiration and commitment to personal development. She is committed to making substantial changes in people and organisations. </p>
+                    <p>As a master trainer and coach, Claire brings significant perspectives on coaching, training, leadership, management, and coaching supervision. As a successful author, she is well-known for her effectiveness in promoting growth and increasing human development. </p>
+                    <p>Claire's commitment to quality is evident in her work at Target Training since the very beginning; this includes corporate training, executive coaching, leadership development, and more. Her Trustpilot reviews are a testimony of her work.</p>
+                    <p>She offers a broad array of services and courses aimed at improving professional skills and organisational effectiveness. </p>
+                    <!--<div class=""><a href="/about-us/the-team#claire_moody" class="">More about Claire Moody</a></div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popup-modals-hb_zp" class="cst__all_modal_class" style="display:none;">
+    
+    <div id="hb_ui">
+        <div class="row">
+            <div class="container" style="display: flex;flex-direction: column;align-items: center;">
+            <h2 class="mt-5 mb-5">Zoe Poulton</h2>
+                <div class="col-md-4 img">
+                    <img src="<?php echo $mediaUrl."Zoe-Poulton.png" ?>"/>
+                </div>
+                
+                <div class="col-md-8 text">
+                    <p>Zoe Poulton is championing a transformative approach to change management training, with the goal of developing a generation of skilled professionals capable of leading change. </p>
+                    <p>Her innovative programme goes beyond theoretical understanding and focuses on practical application in a variety of real-world scenarios. Zoe's comprehensive understanding of change dynamics provides her learners with the confidence and abilities they need to effectively navigate and implement change. </p>
+                    <p>Zoe’s dedication continues beyond the learning period, creating a conducive environment for ongoing professional development.  Her commitment to revolutionising change management, is based on a proactive methodology, that educates professionals to meet the changing needs of businesses and organisations while cultivating a culture of collaboration, adaptation, and resilience in the face of change.</p>
+                    <!--<div class=""><a href="/about-us/the-team#claire_moody" class="">More about Zoe Poulton</a></div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="popup-modals-hb_cb" class="cst__all_modal_class" style="display:none;">    
+    <div id="hb_ui">
+        <div class="row">
+            <div class="container" style="display: flex;flex-direction: column;align-items: center;">
+            <h2 class="mt-5 mb-5">Chris Breedon</h2>
+                <div class="col-md-4 img">
+                    <img src="<?php echo $mediaUrl."Chris-Breedon.png" ?>"/>
+                </div>
+                
+                <div class="col-md-8 text">
+                    <p>Chris provides vast experience in dispute resolution on our mediation training, providing important skills to leaders and managers looking to effectively handle workplace disagreements. </p>
+                    <p>Having a wealth of experience in senior management, human resources, and 30-years of active experience, giving him a thorough understanding of the intricacies of conflict and the value of mediating. </p>
+                    <p>He is skilled at encouraging communication and building working relationships, both of which are essential components of effective mediation. Chris believes that a compassionate personality is critical in assisting parties in developing constructive, forward-thinking solutions by putting individuals at the centre of the resolution process.</p>
+                    <p>Consequently, Chris ensures that our mediation courses prepare professionals to establish happy, productive workplace cultures.</p>
+                    <!--<div class=""><a href="/about-us/the-team#claire_moody" class="">More about Chris Breedon</a></div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="popup-modals-hb_md" class="cst__all_modal_class" style="display:none;">    
+    <div id="hb_ui">
+        <div class="row">
+            <div class="container" style="display: flex;flex-direction: column;align-items: center;">
+            <h2 class="mt-5 mb-5">Marcus Dimbleby</h2>
+                <div class="col-md-4 img">
+                    <img src="<?php echo $mediaUrl."Marcus-Dimbleby.png" ?>"/>
+                </div>
+                
+                <div class="col-md-8 text">
+                    <p>Marcus is a well-known and skilled Agile and organisational coach. </p>
+                    <p>He brings with him extensive experience in flexible leadership, and a unique ability to quickly comprehend the big picture. Marcus is well-known for his proactive and hands-on leadership style and effective critical thinking. His unwavering dedication to cultivating a culture that values trust, adaptability, and collaboration has left a lasting imprint in a range of sectors.</p>
+                    <p>Marcus, who leads on our Agile Transformation courses, exhibits exceptional leadership in both business improvement and agile concepts.</p>
+                    <p>As a result, he is a valuable asset to our business, and you will find his training sessions extremely rewarding and beneficial.</p>
+                    <!--<div class=""><a href="/about-us/the-team#claire_moody" class="">More about Chris Breedon</a></div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popup-modals-hb_mn" class="cst__all_modal_class" style="display:none;">    
+    <div id="hb_ui">
+        <div class="row">
+            <div class="container" style="display: flex;flex-direction: column;align-items: center;">
+            <h2 class="mt-5 mb-5">Martina Neville</h2>
+                <div class="col-md-4 img">
+                    <img src="<?php echo $mediaUrl."Martina-Neville.png" ?>"/>
+                </div>
+                
+                <div class="col-md-8 text">
+                    <p>Martina delivers our Influencing Skills courses in a way that combines her scientific background with deep marketing knowledge.</p>
+                    <p>Her experience provides executives and managers with the tools they need to successfully traverse difficult business settings. Martina recognises that influence is more than just persuasion; it involves a thorough grasp of behaviour, strategy, and communication.</p>
+                    <p>Martina’s knowledge is especially valuable for professionals who want to improve their capacity to lead teams, make influential decisions, and create organisational success. </p>
+                    <p>Her customers learn to assert their vision with confidence and clarity. She is dedicated to improving leaders' and managers' ability to not just reach, but also resonate with their audience and she views influence as a critical component of effective leadership.</p>
+                    <!--<div class=""><a href="/about-us/the-team#claire_moody" class="">More about Chris Breedon</a></div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popup-modals-hb_rh" class="cst__all_modal_class" style="display:none;">    
+    <div id="hb_ui">
+        <div class="row">
+            <div class="container" style="display: flex;flex-direction: column;align-items: center;">
+                <h2 class="mt-5 mb-5">Rob Hames</h2>
+                <div class="col-md-4 img">
+                    <img src="<?php echo $mediaUrl."Rob-Hames.png" ?>"/>
+                </div>
+                <div class="col-md-8 text">
+                    <p>Rob delivers his unique "Thrive to Survive" project, which aims to provide critical support to leaders and managers navigating the difficult waters of retirement or job transfer. </p>
+                    <p>As the creative founder of Trail Finder Coaching, Rob specialises in guiding clients through key career shifts with unparalleled experience. His programme, based on his own experiences as a senior manager and leader, provides a solid foundation for people facing the uncertainties of career advancement.</p>
+                    <p>Rob's painstakingly developed 4-step strategy enables participants to gain self-awareness, integrate their personal values and beliefs with their professional goals, and take proactive measures towards a meaningful career shift. </p>
+                    <p>His strategic approach ensures that every individual is prepared to not only manage change efficiently, but also capitalise on the opportunities it brings, cementing his position as a valuable asset in our learning and development activities.</p>
+                    <!--<div class=""><a href="/about-us/the-team#claire_moody" class="">More about Chris Breedon</a></div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: false,
+                buttons: []
+            };
+
+            var popup = modal(options, $('#popup-modals'));
+            $("#ralp_more").on('click',function(){ 
+                $("#popup-modals").modal("openModal");
+            });
+
+            var popup = modal(options, $('#popup-modals-hb_ui'));
+            $("#scott_more").on('click',function(){ 
+                $("#popup-modals-hb_ui").modal("openModal");
+            });
+
+            var popup = modal(options, $('#popup-modals-hb_pm'));
+            $("#moody_more").on('click',function(){ 
+                $("#popup-modals-hb_pm").modal("openModal");
+            });
+            
+            var popup = modal(options, $('#popup-modals-hb_zp'));
+            $("#zoe_more").on('click',function(){ 
+                $("#popup-modals-hb_zp").modal("openModal");
+            });
+            
+            var popup = modal(options, $('#popup-modals-hb_cb'));
+            $("#chris_more").on('click',function(){ 
+                $("#popup-modals-hb_cb").modal("openModal");
+            });
+            
+            var popup = modal(options, $('#popup-modals-hb_md'));
+            $("#marcus_more").on('click',function(){ 
+                $("#popup-modals-hb_md").modal("openModal");
+            });
+            
+            var popup = modal(options, $('#popup-modals-hb_mn'));
+            $("#martina_more").on('click',function(){ 
+                $("#popup-modals-hb_mn").modal("openModal");
+            });
+            
+            var popup = modal(options, $('#popup-modals-hb_rh'));
+            $("#rob_more").on('click',function(){ 
+                $("#popup-modals-hb_rh").modal("openModal");
+            });
+            
+        }
+    );
+</script>
+<style>
+.cst__all_modal_class .col-md-4.img {
+    width: 120px;
+}
+
+.cst__all_modal_class .col-md-4.img img {
+    border-radius: 50%;    
+    
+}
+
+.cst__all_modal_class .col-md-8.text {
+    text-align: center;
+}
+.trainer_items {
+    display: flex; flex-wrap: wrap; gap: 12px; padding-bottom: 20px; padding-top: 20px;    justify-content: center;
+}
+
+.trainer_items a {
+    display: block;
+    flex-basis: 40%;
+    text-align: center;
+    color:#107ec5;
+}
+.trainer_items img {
+    border-radius: 118px;
+    
+        width: 120px;
+    height: 120px;
+}
+.course_del {
+    margin-top: 28px;
+}
+.cst__all_modal_class h2 {
+    color: #107ec5;
+    margin-top:0px;
+        margin-bottom: 10px;
+}
+.cst__all_modal_class {
+    position: relative;
+}
+.cst__all_modal_class:before {
+    display: block;
+    content: "";
+    clear: both;
+    background: url(https://targettrg.magedemo.co.uk/static/version1705132176/frontend/targettraining/default/en_GB/images/Roundal.png);
+    height: 75px;
+    position: absolute;
+    top: 0;
+    background-size: 40%;
+    width: 184px;
+    background-repeat: no-repeat;
+}
+@media only screen and (max-width: 768px) { 
+.cst__all_modal_class h2 {
+    margin-top:90px;
+    }
+}
+</style>

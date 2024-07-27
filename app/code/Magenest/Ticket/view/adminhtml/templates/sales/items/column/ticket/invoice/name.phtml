@@ -1,0 +1,63 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * @see \Magento\Sales\Block\Adminhtml\Items\Column\Name
+ */
+?>
+
+<?php if ($_item = $block->getItem()): ?>
+    <div id="order_item_<?php /* @escapeNotVerified */ echo $_item->getId() ?>_title"
+         class="product-title">
+        <?php echo $block->escapeHtml($_item->getName()) ?>
+    </div>
+
+    <div class="product-sku-block">
+        <span><?php /* @escapeNotVerified */ echo __('SKU') ?>:</span> <?php echo implode('<br />', $this->helper('Magento\Catalog\Helper\Data')->splitSku($block->escapeHtml($block->getSku()))); ?>
+    </div>
+
+    <?php if ($_item->getProductOptions()): ?>
+        <dl class="item-options">
+            <?php foreach ($_item->getProductOptions() as $_option): ?>
+                <?php if (isset($_option['additional_options']) && !empty($_option['additional_options'])) {?>
+                    <div class="product-option-block">
+                        <?php $data = $block->getInfoTicket($_option['additional_options']); ?>
+                        <?php if (!empty($data['location_title'])) {?>
+                            <span> <?php echo __('Location :') ?> <?php echo $data['location_title']; ?></span><br>
+                        <?php } ?>
+                        <?php if (!empty($data['date'])) {?>
+                            <span> <?php echo __('Date :') ?> <?php echo $data['date']; ?></span><br>
+                        <?php } ?>
+                        <?php if (!empty($data['start_time']) || !empty($data['end_time'])) {?>
+                            <span> <?php echo __('Time :') ?> <?php echo $data['start_time'].$data['end_time']; ?></span><br>
+                        <?php } ?>
+                        <span> <?php echo __('Option select :') ?>  </span>
+                        <?php if (isset($_option['additional_options']['dropdow']) && !empty($_option['additional_options']['dropdow'])) {?>
+                            <span><?php echo $_option['additional_options']['dropdow'].', ' ?></span>
+                        <?php } ?>
+                        <?php if (isset($_option['additional_options']['radio']) && !empty($_option['additional_options']['radio'])) {?>
+                            <?php $radio = explode("_",$_option['additional_options']['radio']['radio_select']); ?>
+                            <span><?php echo $radio[1].', ' ?></span>
+                        <?php } ?>
+                        <?php if (isset($_option['additional_options']['checkbox']) && !empty($_option['additional_options']['checkbox'])) {?>
+                            <?php
+                            $array = json_decode($_option['additional_options']['checkbox'], true);
+                            foreach ($array as $type=>$price)
+                            {?>
+                                <span><?php echo $type.', ' ?></span>
+                            <?php } ?>
+                        <?php } ?>
+                    </div>
+                    <?php } ?>
+            <?php endforeach; ?>
+        </dl>
+    <?php endif; ?>
+    <?php echo $block->escapeHtml($_item->getDescription()) ?>
+<?php endif; ?>

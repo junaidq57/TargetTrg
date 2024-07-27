@@ -1,0 +1,21 @@
+<?php
+/**
+ * @var $block TargetTraining\Ticket\Block\Catalog\Product\View\Ticket\Location
+ */
+?>
+<?php
+    $currentProduct = $this->helper('TargetTraining\Ticket\Helper\Data')->getCurrentProduct();
+    if ($currentProduct && $currentProduct->getCourseLocation()) {
+        $availableLocations = $this->helper('TargetTraining\Ticket\Helper\Data')->getAvailableLocations();
+        foreach ($availableLocations as $location) {
+            if ($currentProduct->getCourseLocation() == $location['value']){
+                echo $location['label'];
+            }
+        }
+    }
+?>
+<?php if($this->helper('TargetTraining\ProductAttribute\Helper\Data')->getCourseDelivery()): ?>
+<div class="course-delivery">
+    <label><?= __('Course delivered by ') ?></label><span><?= $this->helper('TargetTraining\ProductAttribute\Helper\Data')->getCourseDelivery() ?></span>
+</div>
+<?php endif;?>

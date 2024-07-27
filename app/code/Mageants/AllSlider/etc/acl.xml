@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Mageants_AllSlider::config_mageants_allslider" title="Mageants All In One Slider" sortOrder="10" />
+                        </resource>
+                    </resource>
+                </resource>
+                <resource id="Mageants_AllSlider::allslider_content" title="Mageants" translate="title" sortOrder="10">
+					<resource id="Mageants_AllSlider::allslider_grid" title="All Sliders" translate="title" sortOrder="10">
+						<resource id="Mageants_AllSlider::allslider" title="All Sliders Page" translate="title" sortOrder="10" />
+					</resource>	
+					<resource id="Mageants_AllSlider::allslider_request" title="Configuration" translate="title" sortOrder="10" />
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

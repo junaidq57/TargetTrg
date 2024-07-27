@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+  <table name="mageants_allslider" resource="default" engine="innodb" comment="AllSlider table">
+    <column xsi:type="int" name="allslider_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Allslider_id"/>
+    <column xsi:type="int" name="is_display_title" padding="11" unsigned="false" nullable="false" identity="false" comment="Is_display_title"/>
+    <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Title"/>
+    <column xsi:type="int" name="slider_status" padding="11" unsigned="false" nullable="false" identity="false" comment="Slider_status"/>
+    <column xsi:type="varchar" name="store_id" nullable="false" length="255" default="0" comment="Store_id"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="allslider_id"/>
+    </constraint>
+    <index referenceId="MAGEANTS_ALLSLIDER_TITLE" indexType="fulltext">
+      <column name="title"/>
+    </index>
+  </table>
+  <table name="mageants_product_attachment_rel" resource="default" engine="innodb" comment="Mageants Product Attachment relation table">
+    <column xsi:type="int" name="allslider_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Allslider_id"/>
+    <column xsi:type="int" name="product_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Magento Product Id"/>
+    <constraint xsi:type="foreign" referenceId="FK_CD1C4DC296F01B9E16CD63C698F11B6B" table="mageants_product_attachment_rel" column="allslider_id" referenceTable="mageants_allslider" referenceColumn="allslider_id" onDelete="CASCADE"/>
+    <constraint xsi:type="foreign" referenceId="MAGEANTS_PRD_ATTACHMENT_REL_ALLSLIDER_ID_CAT_PRD_ENTT_ENTT_ID" table="mageants_product_attachment_rel" column="product_id" referenceTable="catalog_product_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+  </table>
+</schema>

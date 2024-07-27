@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+		<add id="Mageants_AllSlider::allslider_content" title="All Slider" module="Mageants_AllSlider" sortOrder="11" resource="Mageants_AllSlider::allslider_content"/>
+		<add id="Mageants_AllSlider::allslider_grid" title="All Sliders" module="Mageants_AllSlider" sortOrder="10" parent="Mageants_AllSlider::allslider_content" action="allslider/allslider" resource="Mageants_AllSlider::allslider_grid"/> 
+		<add id="Mageants_AllSlider::allslider_request" title="Configuration" module="Mageants_AllSlider" sortOrder="10" parent="Mageants_AllSlider::allslider_content" action="adminhtml/system_config/edit/section/mageants_allslider/" resource="Mageants_AllSlider::allslider_request"/> 
+    </menu>
+</config>

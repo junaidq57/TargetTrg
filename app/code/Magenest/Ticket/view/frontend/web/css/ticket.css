@@ -1,0 +1,29 @@
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 400px;
+    background-color: grey;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.catalog-product-view .product-options-wrapper {
+    width: 100% !important;
+}
+
+.product-info .product-view .price-box.price-final_price{
+    height: auto ;
+    overflow: hidden;
+}

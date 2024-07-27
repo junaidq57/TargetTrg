@@ -1,0 +1,30 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product media data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Gallery
+ */
+?>
+<?php
+$json = $block->getGalleryImagesJson();
+$images = json_decode($json);
+$mainImageUrl = "";
+foreach ($images as $image) {
+    if ($image->isMain) {
+        $mainImageUrl = $image->full;
+        break;
+    }
+}
+?>
+<?php if ($mainImageUrl): ?>
+    <div class="product media">
+        <img src="<?= $mainImageUrl; ?>"/>
+    </div>
+<?php endif; ?>

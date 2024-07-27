@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<page layout="2columns-right" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.sku" remove="true"/>
+        <referenceBlock name="product.info.mailto" remove="true"/>
+        <referenceBlock name="product.info.review" remove="true" />
+
+        <move element="product.info.media" destination="page.top" before="-"/>
+        <move element="breadcrumbs" destination="product.info.main" before="-" />
+        <move element="page.main.title" destination="product.info.main" after="breadcrumbs"/>
+        <move element="product.info.main.details" destination="product.info.main" after="page.main.title"/>
+        <move element="product.info.price" destination="product.info.main.details" after="event.details.review"/>
+        <!-- <move element="product.info.customimages" destination="product.info.price" after="product.info.price" /> -->
+        
+
+        <!--<move element="product.info" destination="product.info.price" after="event.details.price.suffix" />-->
+        <move element="catalog.product.related" destination="sidebar.main" after="sidebar.event.finder" />
+        <move element="product.info.overview" destination="product.info.price" before="-" />
+      
+        <move element="product.info" destination="product.info.main.details" after="-" />
+
+        <referenceContainer name="page.main.title">
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.location"
+                   template="Magento_Catalog::product/view/customoptions/location.phtml"/>
+        </referenceContainer>
+
+      
+
+
+        <referenceContainer name="product.info.main">
+            <!--<block class="Magento\Catalog\Block\Product\View" name="product.info.date" template="Magento_Catalog::product/view/customoptions/date.phtml" before="-"/>-->
+
+            <container name="product.info.main.details" htmlTag="div" htmlClass="event-details" label="Product Page - Event Details">
+                <block class="TargetTraining\CustomOptions\Block\Product\View\Review" name="event.details.review"
+                       template="Magento_Catalog::product/view/customoptions/review.phtml" before="-" cacheable="false"/>
+            </container>
+
+            <container name="product.info.main.tabs" htmlTag="div" htmlClass="event-tabs" label="Product Page - Event Tabs">
+                <block class="TargetTraining\CustomOptions\Block\Product\View\Tabs" name="event.tabs"
+                       template="Magento_Catalog::product/view/customoptions/tabs.phtml" after="-" />
+            </container>
+        </referenceContainer>
+
+
+        <referenceContainer name="product.info.price">
+              <block class="Magento\Catalog\Block\Product\View"  name="product.info.customimages" template="Magento_Catalog::product/view/customoptions/images.phtml" before="event.details.price.suffix" />
+        </referenceContainer>
+
+
+        <referenceContainer name="product.info.price">
+            <block class="Magento\Framework\View\Element\Template" name="event.details.price.suffix" as="ticket_price_suffix"
+                   template="Magento_Catalog::product/view/customoptions/price-suffix.phtml" after="product.info.price" />
+
+        </referenceContainer>
+
+        <referenceContainer name="sidebar.main">
+            <referenceBlock name="catalog.product.related" template="Magento_Catalog::product/view/customoptions/related.phtml" />
+        </referenceContainer>
+
+        <referenceContainer name="product.info.details" remove="true" />
+    </body>
+</page>

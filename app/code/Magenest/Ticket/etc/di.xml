@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ *
+ * Magenest_Ticket extension
+ * NOTICE OF LICENSE
+ *
+ * @category  Magenest
+ * @package   Magenest_Ticket
+ * @author ThaoPV <thaopw@gmail.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Magenest\Ticket\Model\ResourceModel\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_ticket_event</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Ticket\Model\ResourceModel\Event</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magenest_ticket_event_listing_data_source" xsi:type="string">Magenest\Ticket\Model\ResourceModel\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Magenest\Ticket\Model\ResourceModel\Ticket\Grid\Collections" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_ticket_ticket</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Ticket\Model\ResourceModel\Ticket</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magenest_ticket_ticket_listing_data_source" xsi:type="string">Magenest\Ticket\Model\ResourceModel\Ticket\Grid\Collections</item>
+                <item name="magenest_ticket_attendees_listing_data_source" xsi:type="string">Magenest\Ticket\Model\ResourceModel\Ticket\Grid\Collections</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Magenest\Ticket\Model\ResourceModel\Ticket\Grid\Collections\EventOption" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_ticket_eventoption</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Ticket\Model\ResourceModel\Eventoption</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magenest_ticket_summary_listing_data_source" xsi:type="string">Magenest\Ticket\Model\ResourceModel\Ticket\Grid\Collections\EventOption</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Magento\Catalog\Block\Product\ListProduct" type="Magenest\Ticket\Block\Product\AddToCart" />
+    <preference for="Magento\Checkout\CustomerData\DefaultItem" type="Magenest\Ticket\CustomerData\DefaultItem" />
+</config>

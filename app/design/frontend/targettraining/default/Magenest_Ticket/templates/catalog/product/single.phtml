@@ -1,0 +1,216 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: root
+ * Date: 15/12/2016
+ * Time: 14:57
+ */
+?>
+<?php /** @var $block \Magenest\Ticket\Block\Product\Single */ ?>
+
+<?php $enableTime = $block->enableTime(); ?>
+<?php foreach ($block->getLocation() as $location) {
+    $locationDetail = $location->getLocationDetail();
+    $locationTitle = $location->getLocationTitle();
+    $locationId = $location->getLocationId();
+}?>
+<div id="ticket_option_single">
+    <?php if (sizeof($block->getDate($locationId)) == 1 && $enableTime == 1) { ?>
+        <label class="label_rule">
+            <?php
+            $dateOption = $block->getDate($locationId);
+            foreach ($dateOption as $date) {
+                $startDate = '';
+                if (!empty($date->getDateStart())) {
+                    $startDate = trim(date("d-m-Y", strtotime(substr($date->getDateStart(), 0, 10))));
+                }
+                $startEnd = '';
+                if (!empty($date->getDateEnd())) {
+                    $startEnd = trim(date("d-m-Y", strtotime(substr($date->getDateEnd(), 0, 10))));
+                }
+                $dateId = $date->getDateId();
+            }
+            ?>
+            <b><span style="font-size: 130%"><?php echo 'Date: '?> </span></b>
+            <?php if (!empty($startDate)) {?>
+                <span style="font-size: 130%"><?php echo $startDate.' '; ?></span>
+            <?php } ?>
+            <?php if (!empty($startEnd)) {?>
+                <span style="font-size: 130%"><?php echo 'To '.$startEnd.' '; ?></span>
+            <?php } ?>
+        </label>
+        <br>
+        <?php if (sizeof($block->getSession($dateId)) == 1) {?>
+            <label class="label_rule">
+                <?php
+                $sessionOption = $block->getSession($dateId);
+                foreach ($sessionOption as $session) {
+                    $startSession = $session->getStartTime();
+                    $endSession = $session->getEndTime();
+                    $sessionId = $session->getSessionId();
+                }
+                ?>
+                <?php if (isset($startSession) && !empty($startSession)) {?>
+                    <span style="font-size: 120%"><?php echo 'Start time: '.$startSession.'   '; ?></span>
+                <?php } ?>
+                <?php if (isset($endSession) && !empty($endSession)) {?>
+                    <span style="font-size: 120%"><?php echo 'End time: '.$endSession.' '; ?></span>
+                <?php } ?>
+            </label>
+            <br><br>
+            <input id="single_session" class="single_session" value="<?php echo $sessionId; ?>" style="display: none">
+        <?php } elseif (sizeof($block->getSession($dateId)) > 1 && $enableTime == 1) {?>
+            <div class="multi_session" id="multi_session" name="multi_session" tabindex="0">
+                <label class="label_rule" for="ticket_multi_session">
+                    <span><?php echo __('Select Time'); ?></span>
+                </label>
+                <div class="field required">
+                    <div class="control">
+                        <select aria-required="true" id="ticket_multi_session" name="ticket_multi_session" title="" data-selector="ticket_multi_session" class="required product-custom-option-date admin__control-select" >
+                            <option value="">Select...</option>
+                            <?php  $i =0; ?>
+                            <?php  $dataSession = $block->getSession($dateId); ?>
+                            <?php foreach ($dataSession as $sessions) {
+                                $startTime = '';
+                                if (!empty($sessions->getStartTime())) {
+                                    $startTime = 'Start: '.$sessions->getStartTime().' ';
+                                }
+                                $endTime = '';
+                                if (!empty($sessions->getEndTime())) {
+                                    $endTime = 'End: '.$sessions->getEndTime();
+                                }
+                                $time = $startTime.$endTime;
+                                $sessionId = $sessions->getSessionId();
+                                ?>
+                                <option value="<?php echo $sessionId; ?> "><?php echo $time; ?></option>
+                            <?php                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         }?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+        <input id="single_date" class="single_date" value="<?php echo $dateId; ?>" style="display: none">
+    <?php } elseif (sizeof($block->getDate($locationId)) > 1 && $enableTime == 1) {?>
+        <div class="change_date" id="change_date" name="change_date" tabindex="0">
+             <label class="label_rule" for="ticket_change_date">
+                <span><?php echo __('Select Date'); ?></span>
+            </label>
+            <div class="field required">
+                <div class="control">
+                <select aria-required="true" id="ticket_change_date" name="ticket_change_date" title="" data-selector="ticket_change_date" class="required product-custom-option-date admin__control-select" >
+                   <option value=""><?php echo __('Select...') ?></option>
+                    <?php $i =0; ?>
+                    <?php  $dataDate = $block->getDate($locationId); ?>
+                    <?php foreach ($dataDate as $dates) {
+                        $start = 'no limit';
+                        $end = 'no limit';
+
+                        if (!empty($dates->getDateStart())) {
+                            $dateStart = substr($dates->getDateStart(), 0, 10);
+                            $start = trim(date("d-m-Y", strtotime($dateStart)));
+                        }
+                        if (!empty($dates->getDateEnd())) {
+                            $dateEnd = substr($dates->getDateEnd(), 0, 10);
+                            $end = trim(date("d-m-Y", strtotime($dateEnd)));
+                        }
+                        $dateStr= 'From '.$start.' To '.$end;
+                        $dateId = $dates->getDateId();
+                    ?>
+                    <option value="<?php echo $dateId; ?> "><?php echo $dateStr; ?></option>
+                    <?php                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             }?>
+                   </select>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="change_session" id="change_session" name="change_session" tabindex="0">
+        </div>
+    <?php } ?>
+</div>
+<input id="change_ticket_location" name="additional_options[single][ticket_location]" value="<?php echo $locationId; ?>" style="display: none">
+<input id="change_ticket_date" name="additional_options[single][ticket_date]" value=""  style="display: none">
+<input id="change_ticket_session" name="additional_options[single][ticket_session]" value="" style="display: none">
+<script>
+    require([
+        "jquery",
+        "jquery/ui"
+    ], function (
+        $
+    ) {
+        'use strict';
+        var changeDate = document.getElementById('ticket_change_date');
+        var changeSession = document.getElementById('ticket_multi_session');
+        var returnSession = '<?php echo $block->getReturnSession(); ?>';
+        var singleDate = $('#single_date').val();
+        var singleSession = $('#single_session').val();
+        if (singleDate > 0) {
+            $('#change_ticket_date').attr('value', singleDate);
+        }
+
+        if (singleSession > 0) {
+            $('#change_ticket_session').attr('value', singleSession);
+        }
+
+        $(changeSession).change(function() {
+            $('#change_ticket_session').attr('value', $(this).val());
+        });
+        $(changeDate).change(function() {
+            $("#change_session").empty();
+            $('#change_ticket_date').attr('value', $(this).val());
+            var dateSendRequest = returnSession + '?date_id=' + $(this).val();
+            changeSessionData(dateSendRequest);
+        });
+
+
+        function changeSessionData(dateSendRequest) {
+
+            $.ajax({
+                url: dateSendRequest,
+                type: "POST",
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (response) {
+
+                    if (response.length > 1) {
+
+                        var sessionResponseArray = JSON.parse(response);
+                        var sessionTemplate = " ";
+
+                        if (sessionResponseArray.length > 0) {
+                            if (sessionResponseArray.length <= 1) {
+                                sessionTemplate += ' <label class="label_rule" for="ticket_change_session">';
+                                sessionTemplate += ' <span>' + 'Select Time :'+ sessionResponseArray[0]['time_session']+'</span>';
+                                sessionTemplate += ' </label>';
+                                $('#change_ticket_session').attr('value', sessionResponseArray[0]['session_id']);
+                            } else  {
+                                sessionTemplate += ' <label class="label_rule" for="ticket_change_session">';
+                                sessionTemplate += ' <span>' + 'Select Time' + '</span>';
+                                sessionTemplate += ' </label>';
+                                sessionTemplate += '<div class="field required">';
+                                sessionTemplate += '<div class="control">';
+                                sessionTemplate += '<select aria-required="true" id="ticket_change_session" name="ticket_change_session" title="" data-selector="ticket_change_session" class="required product-custom-option-date admin__control-select" >';
+                                sessionTemplate += '<option value="">' + 'Select...' + '</option>';
+                                for (var i = 0; i < sessionResponseArray.length; i++) {
+
+                                    sessionTemplate += '<option value="'
+                                        + sessionResponseArray[i]['session_id']
+                                        + '">'
+                                        + sessionResponseArray[i]['time_session']
+                                        + '</option>';
+                                }
+                                sessionTemplate += '</select>';
+                                sessionTemplate += '</div>';
+                                sessionTemplate += '</div>';
+                            }
+                            $("#change_session").append(sessionTemplate);
+                            $("#ticket_change_session").change(function() {
+                                $('#change_ticket_session').attr('value', $(this).val());
+                            });
+                        }
+                    }
+                }
+            });
+        }
+    });
+</script>

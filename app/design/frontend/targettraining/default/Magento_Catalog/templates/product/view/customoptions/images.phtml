@@ -1,0 +1,67 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->get(\Magento\Store\Model\StoreManagerInterface::class);
+$mediaUrl = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA)."wysiwyg/";
+?>
+
+
+
+
+
+<div class="dynamic_imgs">
+<?php
+
+    $currentProduct = $this->helper('TargetTraining\Ticket\Helper\Data')->getCurrentProduct();
+
+    if ($currentProduct && $currentProduct->getEmccsplogoenable()) {?>
+   
+     <img src="<?php echo $mediaUrl."EMCCSP_Logo-removebg-preview.png" ?>" alt="">
+   <?php }
+    if ($currentProduct && $currentProduct->getEmccsuplogoenable()) {?>
+  
+     <img src="<?php echo $mediaUrl."EMCCSUP_Logo-removebg-preview.png" ?>" alt="">
+   <?php }
+
+    if ($currentProduct && $currentProduct->getTtacademylogoenable()) {?>
+
+     <img src="<?php echo $mediaUrl."TtT_Academy-removebg-preview.png" ?>" alt="">
+
+   <?php }
+
+    if ($currentProduct && $currentProduct->getIlmlogoenable()) {?>
+   
+     <img src="<?php echo $mediaUrl."ILM _Recognised_Trans.png" ?>" alt="">
+   <?php }
+
+    if ($currentProduct && $currentProduct->getAolllogoenable()) {?>
+    
+     <img src="<?php echo $mediaUrl."AoL_Logo-removebg-preview.png" ?>" alt="">
+   <?php }
+
+
+    if ($currentProduct && $currentProduct->getCmslogoenable()) {?>
+    
+     <img src="<?php echo $mediaUrl."CMS_Logo.png" ?>" alt="">
+   <?php }
+    if ($currentProduct && $currentProduct->getCpdlogoenable()) {?>
+
+     <img src="<?php echo $mediaUrl."CPD_Logo-removebg-preview.png" ?>" alt="">
+   <?php }
+
+ 
+
+   if ($currentProduct && $currentProduct->getTplogoenable()) {?>
+  
+     <img src="<?php echo $mediaUrl."TrustPilot_Trans_Black.png" ?>" alt="">
+   <?php }
+
+    if ($currentProduct && $currentProduct->getMonthlycoaching()) {?>
+  
+     <img src="<?php echo $mediaUrl."monthly-coaching.png" ?>" alt="">
+   <?php }
+
+
+
+?>
+
+</div> 

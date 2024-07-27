@@ -1,0 +1,310 @@
+//
+//    Common
+//--------------------------------------
+& when (@media-common = true) {
+  .section--course-finder-header {
+    position: relative;
+    padding: 30px 0;
+    margin: 0;
+    background: #F6F6F6;
+
+    h2 {
+      font-family: @font-title;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 25px;
+      text-transform: uppercase;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+
+      > span {
+        display: block;
+        margin: 3px 0 0 0;
+        font-family: @font-base;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 26px;
+        text-transform: none;
+        color: rgba(0, 0, 0, .8);
+
+        a {
+          text-decoration: underline;
+          color: rgba(0, 0, 0, 0.8);
+        }
+      }
+    }
+
+    .open-finder {
+      color: @color-red1;
+      text-align: center;
+
+      .catalog-category-view:not(.non-course) &,
+      .cms-about-us-the-team &{
+        display: none;
+      }
+      h2 {
+        display: inline-block;
+        position: relative;
+        background: url('../images/icons/ic_down_red.png') no-repeat right center;
+        background-size: 16px auto;
+        padding: 0 23px 0 0;
+        cursor: pointer;
+      }
+    }
+
+    .close-finder {
+      position: absolute;
+      left: 50%;
+      bottom: -47px;
+      width: 34px;
+      height: 34px;
+      border-radius: 100%;
+      background: @color-red1 url('../images/icons/ic_up_white.png') no-repeat center;
+      background-size: 16px auto;
+      cursor: pointer;
+      text-align: center;
+      transform: translate(-50%, 0);
+
+      .catalog-category-view:not(.non-course) &,
+      .cms-about-us-the-team &{
+        display: none;
+      }
+      span {
+        display: none;
+      }
+    }
+
+    .course-finder {
+      background: @color-red2;
+
+      &--content {
+        padding-left: 10px;
+        padding-right: 10px;
+        color: #333;
+        position: relative;
+        z-index: 9;
+        margin: auto;
+        display: none;
+      }
+
+      &--header {
+        margin: 0 0 30px;
+      }
+
+      &--body {
+        .fieldset {
+          margin: 0 0 23px;
+
+          .field {
+            .control {
+              position: relative;
+
+              &::after {
+                content: '';
+                position: absolute;
+                top: 24px;
+                right: 9px;
+                border-left: 7px solid transparent;
+                border-right: 7px solid transparent;
+                border-top: 7px solid #fff;
+
+                .catalog-category-view:not(.non-course) &,
+                .cms-about-us-the-team &{
+                  display: none;
+                }
+              }
+            }
+
+            select {
+              font-family: @font-base;
+              font-style: normal;
+              font-weight: normal;
+              font-size: 18px;
+              line-height: 25px;
+              color: rgba(255, 255, 255, 0.8);
+              background: #444;
+              background-size: 11px auto;
+              border-color: #444;
+              width: 100%;
+              border-radius: 4px;
+              height: 54px;
+              padding: 12px 30px 12px 15px;
+            }
+          }
+        }
+
+        .actions-toolbar {
+
+          .primary {
+            float: none;
+            display: block;
+          }
+
+          .action.primary {
+            width: 100%;
+            border-color: #D33130;
+            background: #D33130;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-family: @font-title;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 24px;
+            padding: 15px 0;
+          }
+        }
+
+      }
+    }
+
+    &.active {
+      .open-finder {
+        display: none;
+      }
+
+      .course-finder--content {
+        display: block;
+      }
+    }
+  }
+}
+
+
+//
+//    Desktop
+//--------------------------------------
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .section {
+    &--course-finder-header {
+      position: relative;
+
+      .cms-about-us-the-team &{
+        display: block;
+      }
+      h2 {
+        font-family: @font-title;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 25px;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+
+        > span{
+          display: block;
+          margin: 3px 0 0 0;
+          font-family: @font-base;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 18px;
+          line-height: 25px;
+          text-transform: none;
+
+          a {
+            text-decoration: underline;
+            color: rgba(0, 0, 0, 0.8);
+          }
+        }
+      }
+
+      .open-finder,
+      .close-finder {
+        display: none;
+      }
+
+      .course-finder {
+
+        &--content {
+          padding-left: @layout__width-xs-indent;
+          padding-right: @layout__width-xs-indent;
+          max-width: @layout__max-width;
+          color: #000;
+          display: flex;
+          align-items: center;
+          position: relative;
+          z-index: 9;
+          margin: auto;
+        }
+
+        &--header {
+          width: 33.3%;
+          padding: 0 20px 0 0;
+          position: relative;
+          margin-top: 4px;
+          margin-bottom: 0;
+        }
+
+        &--body {
+          width: 66.6%;
+          padding: 0 0 0 20px;
+
+          .form {
+            display: flex;
+            align-items: flex-end;
+          }
+
+          .fieldset {
+            width: 66.6%;
+            padding: 0 10px;
+            margin: 0 -10px;
+            display: flex;
+            align-items: center;
+
+            .field {
+              width: 50%;
+              padding: 0 10px;
+              margin: 0;
+            }
+          }
+
+          .actions-toolbar {
+            width: 33.3%;
+            padding: 0 10px;
+
+            .primary {
+              float: none;
+              display: block;
+            }
+
+            .action.primary {
+              width: 100%;
+              border-color: #D33130;
+              background: #D33130;
+              border-radius: 4px;
+              text-transform: uppercase;
+              font-family: @font-title;
+              font-style: normal;
+              font-weight: bold;
+              font-size: 20px;
+              line-height: 24px;
+              padding: 15px 0;
+            }
+          }
+
+        }
+      }
+    }
+  }
+}
+
+
+.media-width(@extremum, @break, @extremum2, @break2) when (@extremum = 'min')
+and (@break = @screen__m) and (@extremum2 = 'max') and (@break2 = @screen__xl){
+  .section--course-finder-header {
+    h2{
+      padding-left: 0;
+    }
+    .course-finder--body {
+      .actions-toolbar{
+        width: 36%;
+        padding-right: 0;
+      }
+    }
+  }
+}

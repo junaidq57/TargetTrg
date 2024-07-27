@@ -1,0 +1,17 @@
+<!--@subject Your ticket from {{var store.getFrontendName()}} @-->
+{{template config_path="design/email/header_template"}}
+
+<p>{{trans "Welcome to %store_name." store_name=$store.getFrontendName()}}</p>
+<ul>
+    <li><strong>{{trans "Event Name: "}}</strong> <em> {{var title}}</em></li>
+    <li><strong>{{trans "Customer Name: "}}</strong> {{var customer_name}}</li>
+    <li><strong>{{trans "My Code: "}}</strong> {{var ticket_code}}</li>
+    <li><strong>{{trans "Location Title: "}}</strong> {{var location_title}}</li>
+    <li><strong>{{trans "Location Detail: "}}</strong> {{var location_detail}}</li>
+    <li><strong>{{trans "Date: "}}</strong> {{var date}}</li>
+    <li><strong>{{trans "Time: "}}</strong> {{var time}}</li>
+    <li><strong>{{trans "Quantity: "}}</strong> {{var qty}}</li>
+    <li><strong>{{trans "Option: "}}</strong> {{var option_type}}</li>
+</ul>
+
+{{template config_path="design/email/footer_template"}}

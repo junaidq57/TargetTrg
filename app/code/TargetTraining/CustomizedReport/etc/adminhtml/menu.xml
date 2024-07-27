@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="TargetTraining_CustomizedReport::menu" resource="TargetTraining_CustomizedReport::item_1" title="Courses" module="TargetTraining_CustomizedReport" sortOrder="40" parent="Magento_Reports::report" dependsOnModule="Magento_Reports"/>
+
+    	<!--<add id="TargetTraining_CustomizedReport::orders_summary" resource="TargetTraining_CustomizedReport::item_1" title="Orders Summary" action="customize_report/report_sales/sales" module="TargetTraining_CustomizedReport" sortOrder="10" parent="TargetTraining_CustomizedReport::menu" dependsOnModule="Magento_Reports"/>-->
+
+    	<add id="TargetTraining_CustomizedReport::order_details" resource="TargetTraining_CustomizedReport::item_1" title="Future Bookings" action="customize_report/report_sales/orderdetails" module="TargetTraining_CustomizedReport" sortOrder="11" parent="TargetTraining_CustomizedReport::menu" dependsOnModule="Magento_Reports"/>
+
+	</menu>
+</config>

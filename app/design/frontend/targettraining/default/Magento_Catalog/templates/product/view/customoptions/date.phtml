@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var $block TargetTraining\CustomOptions\Block\Product\View\Date
+ */
+?>
+<?php
+$month= date("M", strtotime($block->getProduct()->getDate()));
+$date= date("d", strtotime($block->getProduct()->getDate()));
+?>
+
+<div class="date calendar">
+    <?php if ($block->getProduct()->getDate()): ?>
+        <span class="date"><?php echo $date; ?></span>
+        <span class="month"><?php echo $month; ?></span>
+    <?php endif;?>
+</div>

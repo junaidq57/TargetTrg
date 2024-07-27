@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="breadcrumbs" remove="true"/>
+        <move element="page.main.title" destination="product.info.main" after="product.info.date"/>
+        <move element="product.info.main.details" destination="product.info.main" after="page.main.title"/>
+        <move element="product.info.price" destination="product.info.main.details" after="event.details.review"/>
+
+        <move element="product.info" destination="product.info.price" after="event.details.price.suffix" />
+        <move element="catalog.product.related" destination="sidebar.main" after="sidebar.event.finder" />
+
+        <referenceContainer name="page.main.title">
+            <block class="TargetTraining\Ticket\Block\Catalog\Product\View\Ticket\Location" name="product.info.location" as="ticket_location" template="TargetTraining_Ticket::catalog/product/view/ticket/location.phtml"/>
+        </referenceContainer>
+
+        <referenceContainer name="product.info.main">
+            <block class="TargetTraining\Ticket\Block\Catalog\Product\View\Ticket\Date" name="product.info.date" as="ticket_date" template="TargetTraining_Ticket::catalog/product/view/ticket/date.phtml" before="-"/>
+            <container name="product.info.main.details" htmlTag="div" htmlClass="event-details" label="Product Page - Event Details">
+                <block class="TargetTraining\Ticket\Block\Catalog\Product\View\Ticket\Review" name="event.details.review" as="ticket_review"
+                       template="TargetTraining_Ticket::catalog/product/view/ticket/review.phtml" before="-" />
+            </container>
+
+            <container name="product.info.main.tabs" htmlTag="div" htmlClass="event-tabs" label="Product Page - Event Tabs">
+                <block class="TargetTraining\Ticket\Block\Catalog\Product\View\Ticket\Tabs" name="event.tabs" as="ticket_tabs"
+                       template="TargetTraining_Ticket::catalog/product/view/ticket/tabs.phtml" after="-" />
+            </container>
+        </referenceContainer>
+
+        <referenceContainer name="product.info.price">
+            <block class="Magento\Framework\View\Element\Template" name="event.details.price.suffix" as="ticket_price_suffix"
+                   template="TargetTraining_Ticket::catalog/product/view/ticket/price-suffix.phtml" after="product.info.price" />
+        </referenceContainer>
+
+        <referenceContainer name="sidebar.main">
+            <referenceBlock name="catalog.product.related" template="TargetTraining_Ticket::catalog/product/view/ticket/related.phtml" />
+        </referenceContainer>
+
+        <referenceContainer name="product.info.details" remove="true" />
+    </body>
+</page>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ *
+ * Magenest_Ticket extension
+ * NOTICE OF LICENSE
+ *
+ * @category  Magenest
+ * @package   Magenest_Ticket
+ * @author ThaoPV <thaopw@gmail.com>
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <script src="Magenest_Ticket::js/tinybox/tinybox.js" />
+        <css src="Magenest_Ticket::css/tinybox.css" />
+    </head>
+    <body>
+        <referenceBlock name="product_tabs">
+            <block class="Magenest\Ticket\Block\Adminhtml\Catalog\Product\Edit\Tab\Event" name="product.eventticket">
+                <arguments>
+                    <argument name="group_code" xsi:type="string">basic</argument>
+                </arguments>
+            </block>
+            <action method="addTab">
+                <argument name="name" xsi:type="string">event_ticket_items</argument>
+                <argument name="block" xsi:type="string">product.eventticket</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="product_tabs.customer_options" remove="true"/>
+    </body>
+</page>

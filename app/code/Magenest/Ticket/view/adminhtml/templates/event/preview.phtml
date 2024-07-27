@@ -1,0 +1,102 @@
+<?php
+/**
+ * Copyright © 2015 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ *
+ * Magenest_Ticket extension
+ * NOTICE OF LICENSE
+ *
+ * @category  Magenest
+ * @package   Magenest_Ticket
+ * @author ThaoPV <thaopw@gmail.com>
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /** @var $block \Magenest\Ticket\Block\Adminhtml\Event\Edit\Tab\Preview */ ?>
+<?php
+$productId = $block->getEvent();
+if (isset($productId))
+{
+    $id = $productId;
+} else {
+    $id = 0;
+}
+
+?>
+<div id="popup-mpdal">
+</div>
+<button id="preview_content" style="float: left " ><?php echo __('Preview PDF Ticket') ?></button>
+<br>
+<br>
+<script type="text/javascript">
+    require([
+        'jquery',
+        "underscore",
+        'Magento_Ui/js/form/form',
+        'ko',
+        'Magento_Ui/js/modal/modal'
+    ], function($) {
+        $('#preview_content').click(function() {
+            var url = '<?php echo $block->getSaveImage($id); ?>';
+            new Ajax.Request(url,
+                {
+                    method:'post',
+                    parameters: {
+                        id: <?php echo $id; ?>
+                    },
+                    requestHeaders: [
+                        'Cache-Control', 'no-cache, no-store, must-revalidate',
+                        'Pragma', 'no-cache',
+                        'Expires', '0'
+                    ],
+                    evalScripts: true,
+                    onSuccess: function(response) {
+                        $('#popup-mpdal').html(response.responseText).modal('openModal');
+                    }
+                });
+        });
+    });
+</script>
+<style>
+    th {
+        height: 40px;
+        vertical-align: middle;
+    }
+    table {
+        width: 100%;
+    }
+    .clearfix {
+        text-align: center;
+    }
+</style>
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'Preview Pdf',
+                buttons: [{
+                    text: $.mage.__('Close'),
+                    class: '',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+
+            var popup = modal(options, $('#popup-mpdal'));
+        }
+    );
+</script>

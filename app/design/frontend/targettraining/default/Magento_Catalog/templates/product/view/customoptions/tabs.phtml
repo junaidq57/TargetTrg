@@ -1,0 +1,77 @@
+<script type="text/javascript">
+    require([
+            'jquery',
+            'jquery/ui'
+        ],
+        function($, tabs) {
+            $("#ticket_tabs").tabs();
+        }
+    );
+</script>
+
+<?php if ($this->getAttributeSetName() == 'Course'): ?>
+
+    <div id="ticket_tabs">
+        <ul>
+            <li data-role="title"><a href="#tabs-course-timetable"><span>Course Overview</span></a></li>
+            <li data-role="title"><a href="#tabs-testimonials"><span>Testimonials</span></a></li>
+            <li data-role="title"><a href="#tabs-faqs"><span>FAQs</span></a></li>
+            <?php 
+            $downloads = $this->getProduct()->getData('downloads');
+            if(!empty($downloads)){
+            ?>
+            <li data-role="title"><a href="#tabs-downloads"><span>Downloads</span></a></li>
+        <?php } ?>
+
+        </ul>
+        <div id="tabs-course-timetable" data-role="content">
+            <?php
+            echo $this->helper('TargetTraining\CatalogCategory\Helper\Data')->filterOutputHtml($block->getCourseTimetable());
+            ?>
+        </div>
+        <div id="tabs-testimonials" data-role="content">
+            <?php echo $this->getLayout()
+                        ->createBlock('Magento\Cms\Block\Block')
+                        ->setBlockId('testimonials')
+                        ->toHtml(); ?>
+        </div>
+        <div id="tabs-faqs" data-role="content">
+            <?php echo $this->getLayout()
+                            ->createBlock('Magento\Cms\Block\Block')
+                            ->setBlockId('faqs')
+                            ->toHtml(); ?>
+        </div>
+        <div id="tabs-downloads" data-role="content">
+            <?php
+            
+            if(!empty($downloads)){
+                echo $this->helper('TargetTraining\CatalogCategory\Helper\Data')->filterOutputHtml($downloads);
+            }
+            
+            ?>
+        </div>
+
+    </div>
+
+<?php else: ?>
+
+    <div id="ticket_tabs">
+        <ul>
+            <li data-role="title"><a href="#tabs-product-description"><span>product description</span></a></li>
+            <li data-role="title"><a href="#tabs-product-delivery"><span>delivery</span></a></li>
+        </ul>
+        <div id="tabs-product-description" data-role="content">
+            <?php
+                $description = $this->getProduct()->getDescription();
+                echo $this->helper('TargetTraining\CatalogCategory\Helper\Data')->filterOutputHtml($description);
+            ?>
+        </div>
+        <div id="tabs-product-delivery" data-role="content">
+            <?php
+                $delivery = $this->getProduct()->getDelivery();
+                echo $this->helper('TargetTraining\CatalogCategory\Helper\Data')->filterOutputHtml($delivery);
+            ?>
+        </div>
+    </div>
+
+<?php endif;?>

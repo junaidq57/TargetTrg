@@ -1,0 +1,8 @@
+<div class="featured-review">
+    <p class="content">"<?php echo $block->getCourseQuote(); ?>"</p>
+    <span class="author"><?php echo $block->getCourseQuoter(); ?></span>
+</div>
+<div class="spaces-remaining">
+    <span class="count<?php if(intval($block->getQty()) < 3){ echo ' text-red';}?>"><?php echo intval($block->getQty()); ?></span>
+    <span class="label"><?= __('spaces remaining') ?></span>
+</div>

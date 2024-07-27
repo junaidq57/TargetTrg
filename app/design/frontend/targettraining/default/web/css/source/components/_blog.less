@@ -1,0 +1,110 @@
+//
+//    Common
+//--------------------------------------
+& when (@media-common = true) {
+  .wordpress-homepage-view,
+  .wordpress-post-view,
+  .wordpress-term-view,
+  .wordpress-archive-view{
+    .sidebar-main {
+      background: @color-blue1;
+    }
+
+    .block-blog {
+      .block-title {
+        color: @color-white;
+        font-weight: 700;
+        line-height: 1.1;
+        font-size: 1.4rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+
+        strong {
+          color: white;
+          font-weight: 700;
+          line-height: 1.1;
+          font-size: 1.4rem;
+          margin-top: 2rem;
+          margin-bottom: 2rem;
+        }
+      }
+
+      li {
+        a {
+          color: white;
+          font-weight: 700;
+          line-height: 1.1;
+          font-size: 1.4rem;
+          margin-top: 2rem;
+          margin-bottom: 2rem;
+        }
+      }
+    }
+  }
+  .post-view{
+    .post-image{
+      margin-right: 0;
+      margin-bottom: 30px;
+      float: none;
+
+      img{
+        width: 100%;
+      }
+    }
+    .post-meta{
+      .post-meta-item{
+        margin-bottom: 0;
+
+        a{
+          color: #885093;
+        }
+        &.post-tags{
+          display: none;
+        }
+      }
+    }
+  }
+  .post-list{
+    .post-meta {
+      margin-bottom: 30px;
+
+      .post-meta-item{
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+}
+
+//
+//    Desktop
+//--------------------------------------
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .wordpress-post-view{
+    .page-main{
+      .sidebar-main{
+        margin-top: 60px;
+      }
+    }
+  }
+  .post-view{
+    padding-right: 10px;
+
+    .post-meta{
+      min-height: 60px;
+      margin: 0;
+
+      .post-meta-item{
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 10px 0 0;
+      }
+    }
+  }
+}

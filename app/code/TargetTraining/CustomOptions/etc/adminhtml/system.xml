@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mage_digital_general" sortOrder="2001">
+            <label>Mage Digital</label>
+        </tab>
+        <section id="mage_digital" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label><![CDATA[Attribute Set]]></label>
+            <tab>mage_digital_general</tab>
+            <resource>TargetTraining_CustomOptions::config</resource>
+            <group id="attribute_set" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="course" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Attribute Set is Course</label>
+                    <source_model>\Magento\Catalog\Model\Product\AttributeSet\Options</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

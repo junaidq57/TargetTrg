@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ *
+ * Magenest_Ticket extension
+ * NOTICE OF LICENSE
+ *
+ * @category  Magenest
+ * @package   Magenest_Ticket
+ * @author ThaoPV <thaopw@gmail.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Store/etc/config.xsd">
+    <default>
+        <event_ticket>
+            <general_config>
+                <pattern_code>[A2][N1][A1]Magenest[N3][A2]</pattern_code>
+                <google_api_key>AIzaSyCpi0fGkOSmkv1u_02poRTMB480GlscrwY</google_api_key>
+            </general_config>
+            <pdf_setting>
+                <page_setting>a:9:{i:1;a:5:{s:4:"info";s:10:"event_name";s:1:"x";s:2:"23";s:1:"y";s:3:"250";s:4:"size";s:2:"25";s:5:"color";s:7:"#0E0E0E";}i:2;a:5:{s:4:"info";s:4:"type";s:1:"x";s:3:"341";s:1:"y";s:3:"165";s:4:"size";s:2:"15";s:5:"color";s:7:"#0E0E0E";}i:3;a:5:{s:4:"info";s:10:"start_time";s:1:"x";s:3:"392";s:1:"y";s:3:"116";s:4:"size";s:2:"14";s:5:"color";s:7:"#0E0E0E";}i:4;a:5:{s:4:"info";s:8:"end_time";s:1:"x";s:3:"392";s:1:"y";s:2:"98";s:4:"size";s:2:"14";s:5:"color";s:7:"#0E0E0E";}i:5;a:5:{s:4:"info";s:8:"location";s:1:"x";s:3:"320";s:1:"y";s:2:"40";s:4:"size";s:2:"13";s:5:"color";s:7:"#0E0E0E";}i:6;a:5:{s:4:"info";s:13:"customer_name";s:1:"x";s:3:"370";s:1:"y";s:3:"260";s:4:"size";s:2:"26";s:5:"color";s:7:"#0E0E0E";}i:7;a:5:{s:4:"info";s:4:"code";s:1:"x";s:3:"396";s:1:"y";s:3:"218";s:4:"size";s:2:"15";s:5:"color";s:7:"#0E0E0E";}i:8;a:5:{s:4:"info";s:7:"qr_code";s:1:"x";s:2:"55";s:1:"y";s:2:"85";s:4:"size";s:3:"100";s:5:"color";s:7:"#0E0E0E";}i:9;a:5:{s:4:"info";s:8:"bar_code";s:1:"x";s:2:"55";s:1:"y";s:2:"20";s:4:"size";s:2:"55";s:5:"color";s:7:"#0E0E0E";}}</page_setting>
+            </pdf_setting>
+        </event_ticket>
+    </default>
+</config>

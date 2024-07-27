@@ -1,0 +1,35 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /** @var \Magento\Sales\Block\Adminhtml\Order\View\Items\Renderer\DefaultRenderer $block */ ?>
+<?php $_item = $block->getItem() ?>
+<?php $block->setPriceDataObject($_item) ?>
+<tr>
+    <?php $i = 0;
+    $columns = $block->getColumns();
+    $lastItemNumber = count($columns) ?>
+    <?php foreach ($columns as $columnName => $columnClass):?>
+        <?php $i++; ?>
+        <td class="<?= /* @noEscape */ $columnClass ?><?= /* @noEscape */ ($i === $lastItemNumber ? ' last' : '') ?>">
+            <?= /* @escapeNotVerified */ $block->getColumnHtml($_item, $columnName) ?>
+            <?php if ($columnName == 'product' && isset($_item->getData('product_options')['info_buyRequest']['attendees'])): ?>
+                <div class="option-attendees">
+                    <div class="attendees-label"><?= 'Attendees' ?></div>
+                    <div class="attendees-value">
+                        <?php foreach (explode(",",$_item->getData('product_options')['info_buyRequest']['attendees']) as $value): ?>
+                            <div class="value">
+                                <?php echo $value?>
+                            </div>
+                        <?php endforeach;?>
+                    </div>
+                </div>
+            <?php endif;?>
+        </td>
+    <?php endforeach; ?>
+</tr>

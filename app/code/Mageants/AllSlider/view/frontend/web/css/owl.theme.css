@@ -1,0 +1,128 @@
+/**
+ * Mageants All Sliders Magento2 Extension 
+ */ 
+
+/*
+* 	Owl Carousel Owl Demo Theme 
+*	v1.3.3
+*/
+
+.owl-theme .owl-controls{
+	margin-top: 10px;
+	text-align: center;
+}
+
+/* Styling Next and Prev buttons */
+
+.owl-theme .owl-controls .owl-buttons div{
+	color: #FFF;
+	display: inline-block;
+	zoom: 1;
+	*display: inline;/*IE7 life-saver */
+	margin: 5px;
+	padding: 3px 10px;
+	font-size: 12px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	background: #869791;
+	filter: Alpha(Opacity=50);/*IE7 fix*/
+	opacity: 0.5;
+}
+/* Clickable class fix problem with hover on touch devices */
+/* Use it for non-touch hover action */
+.owl-theme .owl-controls.clickable .owl-buttons div:hover{
+	filter: Alpha(Opacity=100);/*IE7 fix*/
+	opacity: 1;
+	text-decoration: none;
+}
+
+/* Styling Pagination*/
+
+.owl-theme .owl-controls .owl-page{
+	display: inline-block;
+	zoom: 1;
+	*display: inline;/*IE7 life-saver */
+}
+.owl-theme .owl-controls .owl-page span{
+	display: block;
+	width: 12px;
+	height: 12px;
+	margin: 5px 7px;
+	filter: Alpha(Opacity=50);/*IE7 fix*/
+	opacity: 0.5;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	background: #869791;
+}
+
+.owl-theme .owl-controls .owl-page.active span,
+.owl-theme .owl-controls.clickable .owl-page:hover span{
+	filter: Alpha(Opacity=100);/*IE7 fix*/
+	opacity: 1;
+}
+
+/* If PaginationNumbers is true */
+
+.owl-theme .owl-controls .owl-page span.owl-numbers{
+	height: auto;
+	width: auto;
+	color: #FFF;
+	padding: 2px 10px;
+	font-size: 12px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+}
+
+/* preloading images */
+.owl-item.loading{
+	min-height: 150px;
+	background: url(AjaxLoader.gif) no-repeat center center
+}
+.owl-theme .owl-controls .owl-buttons div{
+	position:absolute;
+	color:transparent;
+	width:13px;
+	height:35px;
+}
+.owl-theme .owl-controls .owl-buttons .owl-prev{left:0px; top:35%; background:rgba(0, 0, 0, 0) url("../images/aerrow-result.png") no-repeat scroll 0 0;}
+.owl-theme .owl-controls .owl-buttons .owl-next{right:5px; top:33%; background: rgba(0, 0, 0, 0) url("../images/aerrow-result.png") no-repeat scroll 0 -35px !important;}
+.rcontainer .product.details.product-item-details{text-align:left;}
+.rcontainer .product-item-details .price-box {margin: 0 0 15px;}
+.rcontainer .action.primary{padding:7px 10px !important;}
+.rcontainer .action.towishlist:before {
+  height: 18px !important;
+  content: '\e600' !important;
+}
+.rcontainer .action.tocompare:before {
+  height: 18px !important;
+  content: '\e61e';
+}
+.rcontainer .actions-secondary{text-align:left;}
+.rcontainer .product-item-details .price-box span{font-weight:bold;}
+.rcontainer .action.primary{font-size:1.3rem !important; border-radius:0px;}
+.rcontainer .product-item-inners{margin-top:22px;}
+.rcontainer span.product-image-wrapper{width:100% !important;}
+h2.mageants-block-title::before {border-bottom: 1px solid #dfdfdf; border-top: 1px solid #dfdfdf; bottom: 10px; content: ""; left: 0; margin: 0 auto; position: absolute; right: 0; top: 38%; width: 100%; z-index: -1;}
+h2.mageants-block-title {font-weight: bold; margin: 40px 0 !important; position: relative; text-align: center; z-index: 1;}
+h2.mageants-block-title span {background: #fff none repeat scroll 0 0; padding: 0 15px;}
+@media only screen and (max-width: 768px){
+.rcontainer .product-image-container{width:100% !important;}
+.rcontainer .product.details.product-item-details{text-align:center !important;}
+.rcontainer-fluid .owl-theme .owl-controls .owl-buttons .owl-prev{left:10px !important;}
+}
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px)  {
+	.rcontainer .product-item-actions{display:inline !important;}
+}
+@media only screen and (max-width: 600px){
+	h2.mageants-block-title span{font-size:16px !important;}
+}
+@media only screen and (min-width: 1024px){
+	.rcontainer .list.product-items{margin-left:0px !important;}	
+}
+
+

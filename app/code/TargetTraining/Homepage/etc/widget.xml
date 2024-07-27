@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="homepage_column"
+            class="TargetTraining\Homepage\Block\Widget\Column"
+            is_email_compatible="true">
+        <label translate="true">Homepage - Column</label>
+        <description translate="true">Homepage - Column</description>
+        <parameters>
+            <parameter name="color" xsi:type="select" visible="true" required="true" sort_order="10">
+                <label translate="true">Background Colour</label>
+                <options>
+                    <option name="white" value="white">
+                        <label translate="true">White</label>
+                    </option>
+                    <option name="red" value="red">
+                        <label translate="true">Red</label>
+                    </option>
+                    <option name="blue" value="blue">
+                        <label translate="true">Blue</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="page_id" xsi:type="block" visible="true" required="false" sort_order="20">
+                <label translate="true">Link to CMS Page</label>
+                <block class="Magento\Cms\Block\Adminhtml\Page\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Page...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="custom_link" xsi:type="text" visible="true" required="false" sort_order="30">
+                <label translate="true">Link to custom URL</label>
+            </parameter>
+            <parameter name="block_id" xsi:type="block" visible="true" required="true" sort_order="40">
+                <label translate="true">CMS Block</label>
+                <block class="Magento\Cms\Block\Adminhtml\Block\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Block...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="css_class" xsi:type="text" visible="true" required="false" sort_order="40">
+                <label translate="true">Custom CSS Class</label>
+            </parameter>
+        </parameters>
+        <containers>
+            <container name="homepage.widgets">
+                <template name="default" value="default_template"/>
+            </container>
+        </containers>
+    </widget>
+</widgets>

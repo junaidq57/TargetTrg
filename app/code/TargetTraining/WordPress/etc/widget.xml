@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="wordpress_latest_posts"
+            class="TargetTraining\WordPress\Block\Widget\LatestPosts"
+            is_email_compatible="true">
+        <label translate="true">WordPress - Latest Posts</label>
+        <description translate="true">WordPress - Latest Posts</description>
+        <parameters>
+            <parameter name="section_title" xsi:type="text" visible="true" required="false" sort_order="10">
+                <label translate="true">Section Title</label>
+            </parameter>
+            <parameter name="post_limit" xsi:type="text" visible="true" required="false" sort_order="20">
+                <label translate="true">Post Limit</label>
+            </parameter>
+            <parameter name="show_date" xsi:type="select" visible="true" required="false" source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="30">
+                <label translate="true">Show Published Date</label>
+            </parameter>
+            <parameter name="show_excerpt" xsi:type="select" visible="true" required="false" source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="40">
+                <label translate="true">Show Excerpt</label>
+            </parameter>
+            <parameter name="excerpt_length" xsi:type="text" visible="true" required="false" sort_order="50">
+                <label translate="true">Excerpt Length</label>
+            </parameter>
+            <parameter name="link_text" xsi:type="text" visible="true" required="false" sort_order="60">
+                <label translate="true">Read More Button Label</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

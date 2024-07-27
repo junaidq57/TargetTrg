@@ -1,0 +1,117 @@
+<?php
+$salesOrder = $block->getSalesOrdersEachPage();
+?>
+<?php if($salesOrder):?>
+<div>
+	<div class="admin__data-grid-header admin__data-grid-toolbar">
+		<div class="admin__data-grid-header-row">
+			<div class="admin__data-grid-export">
+				<label class="admin__control-support-text" for="">Export to:</label>
+				<select name="" id="" class="admin__control-select">
+					<option value="http://localhost/unilab/admin/customize_report/report_sales/ExportCsv/">CSV</option>
+				</select>
+				<button id="export" title="Export" type="button" class="action-default scalable task">
+					<span>Export</span>
+				</button>
+			</div>
+		</div>
+
+		<div class="admin__data-grid-header-row ">
+			<div class="admin__control-support-text">
+				<span id=""><?php echo $this->getSizeAllOfSalesOrders(); ?></span>
+					<?php echo __('records found'); ?>
+				<span id="" class="mass-select-info _empty">
+					<strong data-role="counter">0</strong>
+					<span><?php echo __('selected');?></span>
+				</span>
+			</div>
+			<?php echo $block->getChildHtml('customize.report.pagination');?>
+		</div>
+	</div>
+	<?php if($salesOrder->getSize() != 0): ?>
+		<div class="admin__data-grid-wrap admin__data-grid-wrap-static">
+			<table class="data-grid" id="">
+				<thead>
+					<tr>
+						<th class="data-grid-th no-link"><span><?php echo __('ID'); ?></span></th>
+						<th class="data-grid-th no-link"><span><?php echo __('Purchase Point'); ?></span></th>
+						<th class="data-grid-th no-link"><span><?php echo __('Purchase Date'); ?></span></th>
+						<th class="data-grid-th no-link"><span><?php echo __('Bill-to Name'); ?></span></th>
+						<th class="data-grid-th no-link"><span><?php echo __('Ship-to Name'); ?></span></th>
+						<th class="data-grid-th no-link"><span><?php echo __('Grand Total (Base)'); ?></span></th>
+						<th class="data-grid-th no-link"><span><?php echo __('Grand Total (Purchased)'); ?></span></th>
+						<th class="data-grid-th no-link"><span><?php echo __('Status'); ?></span></th>
+						<th class="data-grid-th no-link"><span><?php echo __('Payment Method'); ?></span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach($salesOrder as $order): ?>
+                        <?php
+                        $orderAdminDate = $block->getOrderAdminDate($order->getCreatedAt());
+                        ?>
+						<?php $storeName = $block->getOrderStoreName($order); ?>
+						<tr title="#" class="even">
+							<td class="col-orders">
+								<?php echo $block->getAlreadyData($order->getIncrementId()); ?>
+							</td>
+							<td rowspan="1" class=" col-period col-period">
+								<?php echo $storeName; ?>
+							</td>                            
+							<td class="col-orders">
+								<?php echo $orderAdminDate; ?>
+							</td>
+							<td class="col-orders">
+								<?php echo $block->getAlreadyData($order->getBillingName()); ?>
+							</td>
+							<td class="col-orders">
+								<?php echo $block->getAlreadyData($order->getShippingName()); ?>
+							</td>
+							<td class="col-orders">
+								<?php echo $block->getAlreadyData($order->getBaseGrandTotal());?>                  
+							</td>
+							<td class="col-orders">
+								<?php echo $block->getAlreadyData($order->getGrandTotal());?>                          
+							</td>
+							<td class="col-orders">
+								<?php echo $block->getAlreadyData($order->getStatus());?>                          
+							</td>
+							<td class="col-orders">
+								<?php echo $block->getAlreadyData($order->getPaymentMethod());?>                         
+							</td>
+						</tr>
+					<?php endforeach;?>
+				</tbody>
+			</table>
+		</div>
+	<?php endif;?>
+</div>
+<?php 
+	$filter = $block->getFilterData();
+	$currentPage = $block->getCurrentPage();
+	if(!$currentPage){
+		$currentPage = '';
+	}
+?>
+<?php if($currentPage): ?>
+	<script>
+		require(['jquery'], function ($) {
+			$('#export').on('click', function(){
+				window.location.href = '<?php echo $this->getUrl('customize_report/report_sales/ExportCsv/'); ?>'+'filter/'+'<?php echo $filter ?>'+'/?p='+'<?php echo $currentPage;?>';
+	            return false;
+			});
+		});
+	</script>
+<?php else: ?>	
+	<script>
+		require(['jquery'], function ($) {
+			$('#export').on('click', function(){
+				window.location.href = '<?php echo $this->getUrl('customize_report/report_sales/ExportCsv/'); ?>'+'filter/'+'<?php echo $filter ?>'+'/?p=1';
+	            return false;
+			});
+		});
+	</script>
+<?php endif;?>
+
+<?php else: ?>
+	<?php echo __('Please choose a date range');?>
+<?php endif; ?>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">	
+    <head>    	
+		<css src="Mageants_AllSlider::css/owl.carousel.css" />
+		<css src="Mageants_AllSlider::css/owl.theme.css" />
+		<css src="Mageants_AllSlider::css/owl.transitions.css" />
+    </head>
+    <body>
+		<referenceContainer name="main.content">
+			<block class="Mageants\AllSlider\Block\Product\ProductList" ifconfig="mageants_allslider/allslider_setting/enable" name="mageants.allslider.list" as="mageants.allslider.list" before="-" template="list.phtml"/>
+		</referenceContainer>
+    </body> 
+</page>
