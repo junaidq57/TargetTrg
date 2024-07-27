@@ -6,7 +6,7 @@
 namespace MageWorx\OptionBase\Plugin;
 
 use \Magento\Catalog\Block\Product\View\Options\Type\Select;
-use \Zend\Stdlib\StringWrapper\MbString;
+use \Laminas\Stdlib\StringWrapper\MbString;
 
 /**
  * This plugin adds option_type_id to html elements.

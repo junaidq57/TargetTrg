@@ -10,7 +10,7 @@ use Magento\Framework\App\RequestInterface as Request;
 use MageWorx\OptionFeatures\Helper\Data as Helper;
 use Magento\Checkout\Model\Cart;
 use Magento\Framework\App\State;
-use Zend\Stdlib\StringWrapper\MbString;
+use Laminas\Stdlib\StringWrapper\MbString;
 use Magento\Catalog\Model\Product\Option;
 
 class AroundOptionValuesHtml

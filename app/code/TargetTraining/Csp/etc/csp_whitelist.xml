@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp:etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="script-src">
+            <values>
+                <value id="flow" type="host">*.flow.ai</value>
+                <value id="smctrootio" type="host">smct.io</value>
+                <value id="smctrootco" type="host">smct.co</value>
+                <value id="smctio" type="host">*.smct.io</value>
+                <value id="smctco" type="host">*.smct.co</value>
+                <value id="linksynergy" type="host">*.linksynergy.com</value>
+                <value id="facebook" type="host">*.facebook.net</value>
+                <value id="hotjar" type="host">*.hotjar.com</value>
+                <value id="rakuten" type="host">*.rakuten.com</value>
+                <value id="wmxtools" type="host">*.wmxtools.com</value>
+                <value id="trackedweb" type="host">*.trackedweb.net</value>
+                <value id="ubembed" type="host">*.ubembed.com</value>
+                <value id="shoppe" type="host">*.shop.pe</value>
+                <value id="shopper" type="host">shop.pe</value>
+                <value id="amazonaws" type="host">*.amazonaws.com</value>
+                <value id="trakcedlink" type="host">r2-t.trackedlink.net</value>
+                <value id="godaddy" type="host">seal.godaddy.com</value>
+                <value id="stripe" type="host">js.stripe.com</value>
+                <value id="cloudfront" type="host">*.cloudfront.net</value>
+                <value id="hsscripts" type="host">js.hs-scripts.com</value>
+                <value id="hsbanner" type="host">js.hs-banner.com</value>
+                <value id="hsanalytics" type="host">js.hs-analytics.net</value>
+                <value id="googleapis" type="host">*.googleapis.com</value>
+                <value id="hubspot" type="host">*.hubspot.com</value>
+                <value id="hscollectedforms" type="host">js.hscollectedforms.net</value>
+                <value id="dwin1" type="host">www.dwin1.com</value>
+                <value id="trustpilot" type="host">widget.trustpilot.com</value>
+                <value id="googleoptimize" type="host">www.googleoptimize.com</value>
+                <value id="snapengage" type="host">www.snapengage.com</value>
+                <value id="jsdelivr" type="host">cdn.jsdelivr.net</value>
+                <value id="visualwebsiteoptimizer" type="host">dev.visualwebsiteoptimizer.com</value>
+                <value id="geojs" type="host">get.geojs.io</value>
+                <value id="googletagmanager" type="host">www.googletagmanager.com</value>
+                <value id="growsurf" type="host">app.growsurf.com</value>
+				<value id="calendly" type="host">*.calendly.com</value>
+				<value id="flowai" type="host">*.flowai.app</value>
+				<value id="twitter.com" type="host">*.twitter.com</value>
+				<value id="ads-twitter" type="host">*.ads-twitter.com</value>
+				<value id="smct.co" type="host">smct.co</value>
+				<value id="smct.io" type="host">ipl.smct.io</value>
+				<value id="licdn.com" type="host">*.licdn.com</value>
+				<value id="youtube.com" type="host">*.youtube.com</value>
+				<value id="moatads.com" type="host">*.moatads.com</value>
+				<value id="addthisedge.com" type="host">*.addthisedge.com</value>
+				<value id="addthis.com" type="host">*.addthis.com</value>
+            </values>
+        </policy>
+        <policy id="style-src">
+            <values>
+                <value id="addshoppers" type="host">*.addshoppers.com</value>
+                <value id="trakcedlink" type="host">r2-t.trackedlink.net</value>
+                <value id="godaddy" type="host">seal.godaddy.com</value>
+                <value id="stripe" type="host">js.stripe.com</value>
+                <value id="cloudfront" type="host">*.cloudfront.net</value>
+                <value id="hsscripts" type="host">js.hs-scripts.com</value>
+                <value id="hsbanner" type="host">js.hs-banner.com</value>
+                <value id="hsanalytics" type="host">js.hs-analytics.net</value>
+                <value id="googleapis" type="host">*.googleapis.com</value>
+                <value id="hubspot" type="host">*.hubspot.com</value>
+                <value id="hscollectedforms" type="host">js.hscollectedforms.net</value>
+                <value id="dwin1" type="host">www.dwin1.com</value>
+                <value id="googleoptimize" type="host">www.googleoptimize.com</value>
+                <value id="snapengage" type="host">www.snapengage.com</value>
+                <value id="jsdelivr" type="host">cdn.jsdelivr.net</value>
+                <value id="visualwebsiteoptimizer" type="host">dev.visualwebsiteoptimizer.com</value>
+                <value id="geojs" type="host">get.geojs.io</value>
+                <value id="shoppe" type="host">*.shop.pe</value>
+                <value id="shopper" type="host">shop.pe</value>
+                <value id="googletagmanager" type="host">www.googletagmanager.com</value>
+                <value id="growsurf" type="host">app.growsurf.com</value>
+				<value id="calendly" type="host">*.calendly.com</value>
+				<value id="facebookframe" type="host">*.facebook.com</value>
+            </values>
+        </policy>
+        <policy id="img-src">
+            <values>
+                <value id="rlcdn" type="host">*.rlcdn.com</value>
+                <value id="credly" type="host">*.credly.com</value>
+                <value id="amazonaws" type="host">*.amazonaws.com</value>
+                <value id="cloudfront" type="host">*.cloudfront.net</value>
+                <value id="hsforms" type="host">forms.hsforms.com</value>
+                <value id="googleapis" type="host">storage.googleapis.com</value>
+                <value id="trakcedlink" type="host">r2-t.trackedlink.net</value>
+                <value id="godaddy" type="host">seal.godaddy.com</value>
+                <value id="stripe" type="host">js.stripe.com</value>
+                <value id="hsscripts" type="host">js.hs-scripts.com</value>
+                <value id="hsbanner" type="host">js.hs-banner.com</value>
+                <value id="hsanalytics" type="host">js.hs-analytics.net</value>
+                <value id="googleapis" type="host">*.googleapis.com</value>
+                <value id="hubspot" type="host">*.hubspot.com</value>
+                <value id="hscollectedforms" type="host">js.hscollectedforms.net</value>
+                <value id="dwin1" type="host">www.dwin1.com</value>
+                <value id="googleoptimize" type="host">www.googleoptimize.com</value>
+                <value id="snapengage" type="host">www.snapengage.com</value>
+                <value id="jsdelivr" type="host">cdn.jsdelivr.net</value>
+                <value id="visualwebsiteoptimizer" type="host">dev.visualwebsiteoptimizer.com</value>
+                <value id="geojs" type="host">get.geojs.io</value>
+                <value id="shoppe" type="host">*.shop.pe</value>
+                <value id="shopper" type="host">shop.pe</value>
+                <value id="googletagmanager" type="host">www.googletagmanager.com</value>
+                <value id="growsurf" type="host">app.growsurf.com</value>
+				<value id="calendly" type="host">*.calendly.com</value>
+				<value id="facebookframe" type="host">*.facebook.com</value>
+				<value id="data" type="host">data:</value>
+				<value id="adobedtm.com" type="host">*.adobedtm.com</value>
+				<value id="twitter.com" type="host">*.twitter.com</value>
+				<value id="ads-twitter" type="host">*.ads-twitter.com</value>
+				<value id="linkedin" type="host">*.ads.linkedin.com</value>
+				<value id="t.co" type="host">t.co</value>
+				<value id="google.com" type="host">www.google.com</value>
+				<value id="smct.co" type="host">*.smct.co</value>
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <value id="s3amazonaws" type="host">stage-s3.amazonaws.com</value>
+                <value id="amazonaws" type="host">*.amazonaws.com</value>
+                <value id="hotjario" type="host">*.hotjar.io</value>
+                <value id="hotjarcom" type="host">*.hotjar.com</value>
+                <value id="hotjarwss" type="host">wss://ws.hotjar.com/</value>
+                <value id="trackedweb" type="host">*.trackedweb.net</value>
+                <value id="geoipdb" type="host">geoip-db.com</value>
+                <value id="trakcedlink" type="host">r2-t.trackedlink.net</value>
+                <value id="godaddy" type="host">seal.godaddy.com</value>
+                <value id="stripe" type="host">js.stripe.com</value>
+                <value id="cloudfront" type="host">*.cloudfront.net</value>
+                <value id="hsscripts" type="host">js.hs-scripts.com</value>
+                <value id="hsbanner" type="host">js.hs-banner.com</value>
+                <value id="hsanalytics" type="host">js.hs-analytics.net</value>
+                <value id="googleapis" type="host">*.googleapis.com</value>
+                <value id="hubspot" type="host">*.hubspot.com</value>
+                <value id="hscollectedforms" type="host">js.hscollectedforms.net</value>
+                <value id="dwin1" type="host">www.dwin1.com</value>
+                <value id="googleoptimize" type="host">www.googleoptimize.com</value>
+                <value id="snapengage" type="host">www.snapengage.com</value>
+                <value id="jsdelivr" type="host">cdn.jsdelivr.net</value>
+                <value id="visualwebsiteoptimizer" type="host">dev.visualwebsiteoptimizer.com</value>
+                <value id="geojs" type="host">get.geojs.io</value>
+                <value id="shoppe" type="host">*.shop.pe</value>
+                <value id="shopper" type="host">shop.pe</value>
+                <value id="googletagmanager" type="host">www.googletagmanager.com</value>
+                <value id="growsurf" type="host">app.growsurf.com</value>
+				<value id="calendly" type="host">*.calendly.com</value>
+				<value id="facebookframe" type="host">*.facebook.com</value>
+				<value id="smct.io" type="host">*.smct.io</value>
+				<value id="doubleclick.net" type="host">*.doubleclick.net</value>
+            </values>
+        </policy>
+        <policy id="font-src">
+            <values>
+                <value id="trakcedlink" type="host">r2-t.trackedlink.net</value>
+                <value id="godaddy" type="host">seal.godaddy.com</value>
+                <value id="stripe" type="host">js.stripe.com</value>
+                <value id="cloudfront" type="host">*.cloudfront.net</value>
+                <value id="hsscripts" type="host">js.hs-scripts.com</value>
+                <value id="hsbanner" type="host">js.hs-banner.com</value>
+                <value id="hsanalytics" type="host">js.hs-analytics.net</value>
+                <value id="googleapis" type="host">*.googleapis.com</value>
+                <value id="hubspot" type="host">*.hubspot.com</value>
+                <value id="hscollectedforms" type="host">js.hscollectedforms.net</value>
+                <value id="dwin1" type="host">www.dwin1.com</value>
+                <value id="googleoptimize" type="host">www.googleoptimize.com</value>
+                <value id="snapengage" type="host">www.snapengage.com</value>
+                <value id="jsdelivr" type="host">cdn.jsdelivr.net</value>
+                <value id="visualwebsiteoptimizer" type="host">dev.visualwebsiteoptimizer.com</value>
+                <value id="geojs" type="host">get.geojs.io</value>
+                <value id="shoppe" type="host">*.shop.pe</value>
+                <value id="shopper" type="host">shop.pe</value>
+                <value id="googletagmanager" type="host">www.googletagmanager.com</value>
+                <value id="growsurf" type="host">app.growsurf.com</value>
+				<value id="calendly" type="host">*.calendly.com</value>
+				<value id="facebookframe" type="host">*.facebook.com</value>
+            </values>
+        </policy>
+        <policy id="media-src">
+            <values>
+                <value id="amazonaws" type="host">*.amazonaws.com</value>
+                <value id="trakcedlink" type="host">r2-t.trackedlink.net</value>
+                <value id="godaddy" type="host">seal.godaddy.com</value>
+                <value id="stripe" type="host">js.stripe.com</value>
+                <value id="cloudfront" type="host">*.cloudfront.net</value>
+                <value id="hsscripts" type="host">js.hs-scripts.com</value>
+                <value id="hsbanner" type="host">js.hs-banner.com</value>
+                <value id="hsanalytics" type="host">js.hs-analytics.net</value>
+                <value id="googleapis" type="host">*.googleapis.com</value>
+                <value id="hubspot" type="host">*.hubspot.com</value>
+                <value id="hscollectedforms" type="host">js.hscollectedforms.net</value>
+                <value id="dwin1" type="host">www.dwin1.com</value>
+                <value id="googleoptimize" type="host">www.googleoptimize.com</value>
+                <value id="snapengage" type="host">www.snapengage.com</value>
+                <value id="jsdelivr" type="host">cdn.jsdelivr.net</value>
+                <value id="visualwebsiteoptimizer" type="host">dev.visualwebsiteoptimizer.com</value>
+                <value id="geojs" type="host">get.geojs.io</value>
+                <value id="shoppe" type="host">*.shop.pe</value>
+                <value id="shopper" type="host">shop.pe</value>
+                <value id="googletagmanager" type="host">www.googletagmanager.com</value>
+                <value id="growsurf" type="host">app.growsurf.com</value>
+				<value id="calendly" type="host">*.calendly.com</value>
+				<value id="facebookframe" type="host">*.facebook.com</value>
+            </values>
+        </policy>
+        <policy id="frame-src">
+            <values>
+                <value id="stripe" type="host">js.stripe.com</value>
+                <value id="formstack" type="host">quickstart.formstack.com</value>
+                <value id="trakcedlink" type="host">r2-t.trackedlink.net</value>
+                <value id="godaddy" type="host">seal.godaddy.com</value>
+                <value id="stripe" type="host">js.stripe.com</value>
+                <value id="cloudfront" type="host">*.cloudfront.net</value>
+                <value id="hsscripts" type="host">js.hs-scripts.com</value>
+                <value id="hsbanner" type="host">js.hs-banner.com</value>
+                <value id="hsanalytics" type="host">js.hs-analytics.net</value>
+                <value id="googleapis" type="host">*.googleapis.com</value>
+                <value id="hubspot" type="host">*.hubspot.com</value>
+                <value id="hscollectedforms" type="host">js.hscollectedforms.net</value>
+                <value id="dwin1" type="host">www.dwin1.com</value>
+                <value id="googleoptimize" type="host">www.googleoptimize.com</value>
+                <value id="snapengage" type="host">www.snapengage.com</value>
+                <value id="jsdelivr" type="host">cdn.jsdelivr.net</value>
+                <value id="visualwebsiteoptimizer" type="host">dev.visualwebsiteoptimizer.com</value>
+                <value id="geojs" type="host">get.geojs.io</value>
+                <value id="shoppe" type="host">*.shop.pe</value>
+                <value id="shopper" type="host">shop.pe</value>
+                <value id="googletagmanager" type="host">www.googletagmanager.com</value>
+                <value id="growsurf" type="host">app.growsurf.com</value>
+				<value id="calendly" type="host">*.calendly.com</value>
+				<value id="facebookframe" type="host">*.facebook.com</value>
+				<value id="smct.co" type="host">smct.co</value>
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>

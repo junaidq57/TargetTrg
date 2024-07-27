@@ -19,7 +19,7 @@ $mediaUrl = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterfac
 <?php 
 
     $product = $block->getProduct();
-    $data = explode(',',$product->getData('trainerimages'));
+    $data = explode(',',$product->getData('trainerimages')??"");
     foreach($data as $value):            
   ?>
   <?php 

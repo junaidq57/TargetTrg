@@ -133,7 +133,7 @@ class FeedContent
     {
         if ($this->baseUrlObject === null) {
             $url = $this->storeManager->getStore()->getBaseUrl();
-            $this->baseUrlObject = \Zend\Uri\UriFactory::factory($url);
+            $this->baseUrlObject = \Laminas\Uri\UriFactory::factory($url);
         }
 
         return $this->baseUrlObject;

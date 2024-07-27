@@ -26,7 +26,7 @@ class AroundSelectValuesHtml
     protected $stockHelper;
 
     /**
-     * @var \Zend\Stdlib\StringWrapper\MbString
+     * @var \Laminas\Stdlib\StringWrapper\MbString
      */
     protected $mbString;
 
@@ -35,12 +35,12 @@ class AroundSelectValuesHtml
      *
      * @param \MageWorx\OptionInventory\Helper\Data $helperData
      * @param \MageWorx\OptionInventory\Helper\Stock $stockHelper
-     * @param \Zend\Stdlib\StringWrapper\MbString $mbString
+     * @param \Laminas\Stdlib\StringWrapper\MbString $mbString
      */
     public function __construct(
         \MageWorx\OptionInventory\Helper\Data $helperData,
         \MageWorx\OptionInventory\Helper\Stock $stockHelper,
-        \Zend\Stdlib\StringWrapper\MbString $mbString
+        \Laminas\Stdlib\StringWrapper\MbString $mbString
     ) {
         $this->helperData = $helperData;
         $this->stockHelper = $stockHelper;

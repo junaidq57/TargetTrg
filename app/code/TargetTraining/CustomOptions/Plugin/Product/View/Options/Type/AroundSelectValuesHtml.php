@@ -12,7 +12,7 @@ class AroundSelectValuesHtml extends \MageWorx\OptionInventory\Plugin\Product\Vi
     public function __construct(
         \MageWorx\OptionInventory\Helper\Data $helperData,
         \MageWorx\OptionInventory\Helper\Stock $stockHelper,
-        \Zend\Stdlib\StringWrapper\MbString $mbString,
+        \Laminas\Stdlib\StringWrapper\MbString $mbString,
         \Magento\Framework\Stdlib\DateTime\DateTime $date
     ) {
         $this->date = $date;

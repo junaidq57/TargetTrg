@@ -36,6 +36,15 @@
                                         </item>
                                     </item>
                                 </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="checkout" xsi:type="array">
+                            <item name="children" xsi:type="array">
                                 <item name="steps" xsi:type="array">
                                     <item name="children" xsi:type="array">
                                         <item name="billing-step" xsi:type="array">
@@ -61,6 +70,7 @@
                         </item>
                     </item>
                 </argument>
+
             </arguments>
         </referenceBlock>
         <move element="logo" destination="checkout.header.wrapper"/>
